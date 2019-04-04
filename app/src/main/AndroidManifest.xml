@@ -18,9 +18,13 @@
             android:label="@string/title_activity_trophies"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
+            android:name=".habitDetail"
+            android:label="@string/title_activity_habit_detail"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".home"
             android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".CreateNewUserActivity"
             android:label="@string/title_activity_create_new_user"

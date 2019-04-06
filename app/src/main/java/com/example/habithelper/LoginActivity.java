@@ -95,7 +95,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mProgressView = findViewById(R.id.login_progress);
 
         // TODO: Keep Commented Out
-        Intent i = new Intent(LoginActivity.this, home.class);
+        Intent i = new Intent(LoginActivity.this, Trophies.class);
         startActivity(i);
     }
 

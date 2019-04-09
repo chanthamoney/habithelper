@@ -14,8 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".habitDetail"
-            android:label="@string/title_activity_habit_detail"
+            android:name=".Trophies"
+            android:label="@string/title_activity_trophies"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".home"

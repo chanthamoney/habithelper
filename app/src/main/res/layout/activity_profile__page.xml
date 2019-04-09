@@ -20,7 +20,7 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_profile__page"
-        app:menu="@menu/activity_profile__page_drawer" >
+        app:menu="@menu/side_menu" >
 
     </android.support.design.widget.NavigationView>
 

@@ -1,8 +1,11 @@
 package com.example.habithelper;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,6 +15,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 
 public class Trophies extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -66,22 +71,47 @@ public class Trophies extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        Intent i;
 
-        } else if (id == R.id.nav_slideshow) {
+        if (id == R.id.nav_profile) {
+            i = new Intent(this,Profile_Page.class);
+            startActivity(i);
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nav_habits) {
+            i = new Intent(this, home.class);
+            this.startActivity(i);
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_search) {
+            i = new Intent(this,home.class);
+            this.startActivity(i);
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_settings) {
+            i = new Intent(this,home.class);
+            this.startActivity(i);
+
+        } else if (id == R.id.nav_home) {
+            i = new Intent(this,home.class);
+            this.startActivity(i);
+
+        }   else if (id == R.id.nav_trophies) {
 
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void trophyDialog(android.view.View view) {
+        AlertDialog alertDialog = new AlertDialog.Builder(Trophies.this).create();
+        alertDialog.setTitle("First Habit");
+        alertDialog.setMessage("Congratulations! You earned this trophy by creating your first habit.");
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        alertDialog.show();
     }
 }

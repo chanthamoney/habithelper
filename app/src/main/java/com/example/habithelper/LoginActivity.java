@@ -93,9 +93,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
-        // TODO: COMMENT OUT
-//        Intent i = new Intent(LoginActivity.this, Profile_Page.class);
-//        startActivity(i);
+
+        // TODO: CHANGE TO VIEW YOU WANT TO SEE
+        Intent i = new Intent(LoginActivity.this, home.class);
+        startActivity(i);
     }
 
     private void populateAutoComplete() {

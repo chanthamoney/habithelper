@@ -20,6 +20,8 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_friends_feed"
-        app:menu="@menu/activity_friends_feed_drawer" />
+        app:menu="@menu/side_menu" >
+
+    </android.support.design.widget.NavigationView>
 
 </android.support.v4.widget.DrawerLayout>

@@ -36,6 +36,7 @@ public class Trophies extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        navigationView.getMenu().getItem(4).setChecked(true);
     }
 
     @Override

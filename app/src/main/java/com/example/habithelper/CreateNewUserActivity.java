@@ -22,7 +22,7 @@ public class CreateNewUserActivity extends AppCompatActivity {
         submitSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(CreateNewUserActivity.this, LoginActivity.class);
+                Intent i = new Intent(CreateNewUserActivity.this, home.class);
                 startActivity(i);
             }
         });

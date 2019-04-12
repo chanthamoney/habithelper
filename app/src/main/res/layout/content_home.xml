@@ -11,19 +11,18 @@
     <pl.droidsonroids.gif.GifImageView
         android:id="@+id/imageView2"
         android:layout_width="385dp"
-        android:layout_height="303dp"
+        android:layout_height="350dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:clickable="true"
+        android:onClick="clickJar"
         android:src="@drawable/jar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-        android:clickable="true"
-        android:onClick="clickJar"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <TextView
         android:id="@+id/textView2"
@@ -52,7 +51,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Jar Total: $14.23"
+        android:text="@string/jar_amount"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/imageView2"
         app:layout_constraintEnd_toEndOf="parent"

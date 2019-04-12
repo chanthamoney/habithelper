@@ -88,4 +88,12 @@ public class ActivitySideMenu extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    public void clickProfile(android.view.View view) {
+        if (!this.getLocalClassName().equalsIgnoreCase(Profile_Page.class.getSimpleName())) {
+            Intent i;
+            i = new Intent(this,Profile_Page.class);
+            startActivity(i);
+        }
+    }
 }

@@ -17,7 +17,7 @@
         <activity android:name=".BadSpecificHabit" />
         <activity
             android:name=".Profile_Page"
-            android:label="@string/title_activity_profile__page"
+            android:label="Profile Page"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Friend_Page"
@@ -29,11 +29,11 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".habitDetail"
-            android:label="@string/title_activity_habit_detail"
+            android:label="Specific Habit"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".home"
-            android:label="@string/title_activity_home"
+            android:label="Home"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".friends_feed"

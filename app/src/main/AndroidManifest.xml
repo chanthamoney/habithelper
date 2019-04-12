@@ -36,7 +36,7 @@
             android:label="Home"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".friends_feed"
+            android:name=".Friend_Feed_Page"
             android:label="Friends Feed"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

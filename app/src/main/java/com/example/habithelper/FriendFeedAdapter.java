@@ -7,17 +7,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import java.util.List;
 
-public class friendsFeedAdapter extends RecyclerView.Adapter<friendsFeedAdapter.FriendFeedViewHolder> {
+public class FriendFeedAdapter extends RecyclerView.Adapter<FriendFeedAdapter.FriendFeedViewHolder> {
     //this context we will use to inflate the layout
     private Context mCtx;
 
     //we are storing all the products in a list
-    private List<FriendFeed> friendFeedList;
+    private List<FriendFeedFeed> friendFeedList;
 
     //getting the context and product list with constructor
-    public FriendFeedAdapter(Context mCtx, List<FriendFeed> friendFeedList) {
+    public FriendFeedAdapter(Context mCtx, List<FriendFeedFeed> friendFeedList) {
         this.mCtx = mCtx;
         this.friendFeedList = friendFeedList;
     }
@@ -33,11 +34,11 @@ public class friendsFeedAdapter extends RecyclerView.Adapter<friendsFeedAdapter.
     @Override
     public void onBindViewHolder(FriendFeedViewHolder holder, int position) {
         //getting the product of the specified position
-        FriendFeed friendFeed = friendFeedList.get(position);
+        FriendFeedFeed friendFeedFeed = friendFeedList.get(position);
 
         //binding the data with the viewholder views
-        holder.textViewTitle.setText(friendFeed.getTitle());
-        holder.imageView.setImageDrawable(mCtx.getResources().getDrawable(friendFeed.getImage()));
+        holder.textViewTitle.setText(friendFeedFeed.getTitle());
+        holder.imageView.setImageDrawable(mCtx.getResources().getDrawable(friendFeedFeed.getImage()));
     }
 
     @Override
@@ -56,3 +57,11 @@ public class friendsFeedAdapter extends RecyclerView.Adapter<friendsFeedAdapter.
             textViewTitle = itemView.findViewById(R.id.textViewTitle);
             imageView = itemView.findViewById(R.id.imageView);
         }
+    }
+
+}
+
+
+
+
+

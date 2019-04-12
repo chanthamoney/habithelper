@@ -59,8 +59,8 @@ public class ActivitySideMenu extends AppCompatActivity
             }
 
         } else if (id == R.id.nav_search) {
-            if (!this.getLocalClassName().equalsIgnoreCase(friends_feed.class.getSimpleName())) {
-                i = new Intent(this,friends_feed.class);
+            if (!this.getLocalClassName().equalsIgnoreCase(Friend_Feed_Page.class.getSimpleName())) {
+                i = new Intent(this,Friend_Feed_Page.class);
                 startActivity(i);
             }
 

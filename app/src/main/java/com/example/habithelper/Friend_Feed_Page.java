@@ -2,10 +2,8 @@ package com.example.habithelper;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -15,13 +13,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class friends_feed extends ActivitySideMenu
+import java.util.ArrayList;
+import java.util.List;
+
+public class Friend_Feed_Page extends ActivitySideMenu
         implements NavigationView.OnNavigationItemSelectedListener {
+    //a list to store all the Friend Feed Posts
+    List<FriendFeedFeed> friendFeedList;
 
-    //A list to store all the friend feed posts
-    List<FriendFeed> friendFeedList;
-
-    //The RecyclerView
+    //the recyclerview
     RecyclerView recyclerView;
 
     @Override
@@ -32,30 +32,36 @@ public class friends_feed extends ActivitySideMenu
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.getMenu().getItem(3).setChecked(true);
 
-        //Get recyclerView from xml
+        //getting the recyclerview from xml
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        //Initialize the friendFeedList
+        //initializing the productlist
         friendFeedList = new ArrayList<>();
-
-        profileFeedList.add(
-                new ProfileFeed(1, "Ariana ate InNOut before her sound check.",
+        //adding some items to our list
+        friendFeedList.add(
+                new FriendFeedFeed(1, "Ariana ate InNOut before her sound check.",
                         R.drawable.arigrande));
 
-        profileFeedList.add(
-                new ProfileFeed(1, "jvn didn't put on sunscreen.",
+        friendFeedList.add(
+                new FriendFeedFeed(1, "jvn didn't put on sunscreen.",
                         R.drawable.jvn));
 
-        profileFeedList.add(
-                new ProfileFeed(1, "Ariana forget to feed PiggySmalls.",
+        friendFeedList.add(
+                new FriendFeedFeed(1, "Ariana forget to feed PiggySmalls.",
                         R.drawable.arigrande));
 
-        profileFeedList.add(
-                new ProfileFeed(1, "Ariana didn't go to bed before 10 pm.",
+        friendFeedList.add(
+                new FriendFeedFeed(1, "Ariana didn't go to bed before 10 pm.",
                         R.drawable.arigrande));
 
+
+        //creating recyclerview adapter
+        FriendFeedAdapter adapter = new FriendFeedAdapter(this, friendFeedList);
+
+        //setting adapter to recyclerview
+        recyclerView.setAdapter(adapter);
 
     }
 
@@ -68,4 +74,5 @@ public class friends_feed extends ActivitySideMenu
             super.onBackPressed();
         }
     }
+
 }

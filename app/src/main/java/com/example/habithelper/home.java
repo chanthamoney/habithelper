@@ -14,24 +14,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class home extends AppCompatActivity
+public class home extends ActivitySideMenu
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
+        super.onCreate(savedInstanceState);
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
         navigationView.getMenu().getItem(0).setChecked(true);
     }
 
@@ -43,48 +34,5 @@ public class home extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.home, menu);
-        return true;
-    }
-
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-        Intent i;
-
-        if (id == R.id.nav_profile) {
-            i = new Intent(this,Profile_Page.class);
-            startActivity(i);
-
-        } else if (id == R.id.nav_habits) {
-            i = new Intent(this, home.class);
-            this.startActivity(i);
-
-        } else if (id == R.id.nav_search) {
-            i = new Intent(this,home.class);
-            this.startActivity(i);
-
-        } else if (id == R.id.nav_settings) {
-            i = new Intent(this,home.class);
-            this.startActivity(i);
-
-        } else if (id == R.id.nav_home) {
-
-        }  else if (id == R.id.nav_trophies) {
-            i = new Intent(this, Trophies.class);
-            this.startActivity(i);
-
-        }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
     }
 }

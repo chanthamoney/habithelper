@@ -13,16 +13,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".GoodSpecificHabit"></activity>
-        <activity android:name=".BadSpecificHabit"></activity>
+        <activity android:name=".GoodSpecificHabit" />
+        <activity android:name=".BadSpecificHabit" />
         <activity
             android:name=".Profile_Page"
             android:label="@string/title_activity_profile__page"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Friend_Page"
             android:label="Friend Page"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Trophies"
             android:label="@string/title_activity_trophies"
@@ -30,19 +30,19 @@
         <activity
             android:name=".habitDetail"
             android:label="@string/title_activity_habit_detail"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".home"
             android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".friends_feed"
             android:label="Friends Feed"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".CreateNewUserActivity"
             android:label="@string/title_activity_create_new_user"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".LoginActivity"
             android:label="@string/app_name">

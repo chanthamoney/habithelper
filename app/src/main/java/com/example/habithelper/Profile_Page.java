@@ -1,7 +1,11 @@
 package com.example.habithelper;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.design.widget.NavigationView;
@@ -12,6 +16,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -87,5 +94,48 @@ public class Profile_Page extends ActivitySideMenu
         int id = item.getItemId();
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void open(){
+
+    }
+
+    private static ArrayList<View> getViewsByTag(ViewGroup root, String tag){
+        ArrayList<View> views = new ArrayList<View>();
+        final int childCount = root.getChildCount();
+        for (int i = 0; i < childCount; i++) {
+            final View child = root.getChildAt(i);
+            if (child instanceof ViewGroup) {
+                views.addAll(getViewsByTag((ViewGroup) child, tag));
+            }
+
+            final Object tagObj = child.getTag();
+            if (tagObj != null && tagObj.equals(tag)) {
+                views.add(child);
+            }
+
+        }
+        return views;
+    }
+
+    protected void onActivityResult(int requestCode,int resultCode,Intent data){
+        super.onActivityResult(requestCode,resultCode,data);
+        Bitmap bitmap=(Bitmap)data.getExtras().get("data");
+
+        ArrayList<View> profilePiks = getViewsByTag((ViewGroup)getWindow().getDecorView().getRootView(), "profilePik");
+        for(View f : profilePiks) {
+            ((ImageView) f).setImageBitmap(bitmap);
+        }
+        ImageView imgView = (ImageView) findViewById(R.id.imageView);
+        imgView.setImageBitmap(bitmap);
+        imgView = (ImageView) findViewById(R.id.imageViewMenu);
+        imgView.setImageBitmap(bitmap);
+
+    }
+
+    public void changePicture(android.view.View view) {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE); //IMAGE CAPTURE CODE
+        startActivityForResult(intent, 0);
+
     }
 }

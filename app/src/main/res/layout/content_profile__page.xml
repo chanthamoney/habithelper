@@ -96,12 +96,14 @@
                 android:adjustViewBounds="true"
                 android:gravity="center"
                 android:scaleType="centerInside"
-                android:src="@drawable/profilepikture"
+                android:src="@drawable/profilepikture_edit"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@tools:sample/avatars" />
+                android:clickable="true"
+                android:onClick="changePicture"
+                />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerView"

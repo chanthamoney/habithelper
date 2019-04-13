@@ -95,7 +95,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mProgressView = findViewById(R.id.login_progress);
 
         // TODO: CHANGE TO VIEW YOU WANT TO SEE
-        Intent i = new Intent(LoginActivity.this, SettingsActivity.class);
+        Intent i = new Intent(LoginActivity.this, CreateNewUserActivity.class);
         startActivity(i);
     }
 

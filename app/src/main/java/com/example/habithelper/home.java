@@ -1,7 +1,6 @@
 package com.example.habithelper;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.design.widget.NavigationView;
@@ -16,6 +15,7 @@ public class home extends ActivitySideMenu
         implements NavigationView.OnNavigationItemSelectedListener {
     private SwipeStack mSwipeStack;
     private SwipeStackAdapter mAdapter;
+    private ArrayList<String> mData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,14 +25,34 @@ public class home extends ActivitySideMenu
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.getMenu().getItem(0).setChecked(true);
 
-        ArrayList<String> mData = new ArrayList<>();
+        mData = new ArrayList<String>();
+        mData.add("Welcome to habit helper!\nThese are your notifications.\nLet's begin with some tips!\n TIP 1: Swipe Left to delete a notification and swipe right to save!");
 
         for (int x = 0; x < 5; x++) {
-            mData.add("NOTIF." + " " + (x + 1) + "\nThis is an example notification.");
+            mData.add("NOTIF." + " " + (x + 2) + "\nThis is an example notification.");
         }
 
-        SwipeStack swipeStack = (SwipeStack) findViewById(R.id.swipeStack);
-        swipeStack.setAdapter(new SwipeStackAdapter(getApplicationContext(), mData));
+        mSwipeStack = (SwipeStack) findViewById(R.id.swipeStack);
+        mAdapter = new SwipeStackAdapter(getApplicationContext(), mData);
+        mSwipeStack.setAdapter(mAdapter);
+
+        mSwipeStack.setListener(new SwipeStack.SwipeStackListener() {
+            @Override
+            public void onViewSwipedToLeft(int position) {
+                mAdapter.remove(position);
+            }
+
+            @Override
+            public void onViewSwipedToRight(int position) {
+
+            }
+
+            @Override
+            public void onStackEmpty() {
+                mAdapter.reset();
+                mSwipeStack.resetStack();
+            }
+        });
 
     }
 
@@ -47,11 +67,6 @@ public class home extends ActivitySideMenu
     }
 
     public void clickJar(android.view.View view) {
-//        AlertDialog.Builder builder = new AlertDialog.Builder(home.this);
-//        builder.setTitle("Transaction History");
-//        builder.setMessage();
-//        builder.create().show();
-
         AlertDialog.Builder builder = new AlertDialog.Builder(home.this);
         builder.setTitle("Transaction History");
         builder.setIcon(R.drawable.jar);

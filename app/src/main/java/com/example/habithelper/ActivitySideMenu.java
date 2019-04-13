@@ -65,8 +65,8 @@ public class ActivitySideMenu extends AppCompatActivity
             }
 
         } else if (id == R.id.nav_settings) {
-            if (!this.getLocalClassName().equalsIgnoreCase(home.class.getSimpleName())) {
-                i = new Intent(this,home.class);
+            if (!this.getLocalClassName().equalsIgnoreCase(SettingsActivity.class.getSimpleName())) {
+                i = new Intent(this,SettingsActivity.class);
                 startActivity(i);
             }
 

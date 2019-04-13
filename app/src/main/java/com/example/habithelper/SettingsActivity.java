@@ -41,7 +41,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
      * A preference value change listener that updates the preference's summary
      * to reflect its new value.
      */
-    private static Preference.OnPreferenceChangeListener sBindPreferenceSummaryToValueListener = new Preference.OnPreferenceChangeListener() {
+    public static Preference.OnPreferenceChangeListener sBindPreferenceSummaryToValueListener = new Preference.OnPreferenceChangeListener() {
         @Override
         public boolean onPreferenceChange(Preference preference, Object value) {
             String stringValue = value.toString();
@@ -107,7 +107,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
      *
      * @see #sBindPreferenceSummaryToValueListener
      */
-    private static void bindPreferenceSummaryToValue(Preference preference) {
+    public static void bindPreferenceSummaryToValue(Preference preference) {
         // Set the listener to watch for value changes.
         preference.setOnPreferenceChangeListener(sBindPreferenceSummaryToValueListener);
 
@@ -181,6 +181,9 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             // updated to reflect the new value, per the Android Design
             // guidelines.
             bindPreferenceSummaryToValue(findPreference("example_text"));
+            bindPreferenceSummaryToValue(findPreference("example_text3"));
+            bindPreferenceSummaryToValue(findPreference("example_text2"));
+            bindPreferenceSummaryToValue(findPreference("example_text4"));
             bindPreferenceSummaryToValue(findPreference("example_list"));
         }
 
@@ -258,24 +261,25 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
     public void deleteAccount(android.view.View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(SettingsActivity.this);
         builder.setTitle("Are you sure?");
-        builder.setItems(new CharSequence[]
-                        {"Deleting your account is an irreversible action. None of your account information will be able to be retrieved again.", "Cancel", "Ok."},
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        // The 'which' argument contains the index position
-                        // of the selected item
-                        switch (which) {
-                            case 0:
-                                break;
-                            case 1:
-                                Toast.makeText(SettingsActivity.this, "Cancelled.", Toast.LENGTH_SHORT).show();
-                                break;
-                            case 2:
-                                Intent i;
-                                i = new Intent(getBaseContext(), LoginActivity.class);
-                                startActivity(i);
-                                break;
-                        }
+        builder.setIcon(R.drawable.ic_delete_black_24dp);
+        builder.setMessage("Deleting your account is an irreversible action. None of your account information will be able to be retrieved again.");
+        builder.setPositiveButton("Cancel",
+                new DialogInterface.OnClickListener()
+                {
+                    public void onClick(DialogInterface dialog, int id)
+                    {
+                        dialog.cancel();
+                    }
+                });
+
+        builder.setNegativeButton("Yes, delete my account.",
+                new DialogInterface.OnClickListener()
+                {
+                    public void onClick(DialogInterface dialog, int id)
+                    {
+                        Intent i;
+                        i = new Intent(getBaseContext(), LoginActivity.class);
+                        startActivity(i);
                     }
                 });
         builder.create().show();
@@ -289,12 +293,14 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
 
     @Override
     public void onHeaderClick(Header header, int position) {
-        super.onHeaderClick(header, position);
-        if (header.title.equals("Log out")) {
+        if ("Log out".equals(header.title)) {
             logOut(getListView());
+            return;
         }
-        if (header.title.equals("Delete Account")) {
+        if ("Delete Account".equals(header.title)) {
             deleteAccount(getListView());
+            return;
         }
+        super.onHeaderClick(header, position);
     }
 }

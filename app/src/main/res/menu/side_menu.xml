@@ -21,9 +21,9 @@
             android:icon="@android:drawable/ic_search_category_default"
             android:title="Search People" />
         <item
-            android:id="@+id/nav_trophies"
+            android:id="@+id/nav_achievements"
             android:icon="@android:drawable/ic_menu_myplaces"
-            android:title="Trophies" />
+            android:title="Achievements" />
         <item
             android:id="@+id/nav_settings"
             android:icon="@drawable/ic_menu_manage"

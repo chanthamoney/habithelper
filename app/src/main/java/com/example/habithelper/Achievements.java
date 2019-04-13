@@ -18,12 +18,12 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
-public class Trophies extends ActivitySideMenu
+public class Achievements extends ActivitySideMenu
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_trophies);
+        setContentView(R.layout.activity_achievements);
         super.onCreate(savedInstanceState);
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -40,10 +40,10 @@ public class Trophies extends ActivitySideMenu
         }
     }
 
-    public void trophyDialog(android.view.View view) {
-        AlertDialog alertDialog = new AlertDialog.Builder(Trophies.this).create();
+    public void achievementDialog(android.view.View view) {
+        AlertDialog alertDialog = new AlertDialog.Builder(Achievements.this).create();
         alertDialog.setTitle("First Habit");
-        alertDialog.setMessage("Congratulations! You earned this trophy by creating your first habit.");
+        alertDialog.setMessage("Congratulations! You earned this achievement by creating your first habit.");
         alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {

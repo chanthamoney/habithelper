@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".Trophies"
-    tools:showIn="@layout/app_bar_trophies">
+    tools:context=".Achievements"
+    tools:showIn="@layout/app_bar_achievements">
 
     <TableLayout
         android:layout_width="match_parent"
@@ -21,11 +21,11 @@
             android:layout_height="match_parent">
 
             <ImageButton
-                android:id="@+id/trophy1"
+                android:id="@+id/achievement1"
                 android:layout_width="144dp"
                 android:layout_height="139dp"
                 android:layout_weight="1"
-                android:onClick="trophyDialog"
+                android:onClick="achievementDialog"
                 android:src="@android:drawable/btn_star_big_on" />
 
             <ImageButton

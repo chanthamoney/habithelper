@@ -19,7 +19,7 @@
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="title_activity_trophies">Trophies</string>
+    <string name="title_activity_achievements">Achievements</string>
     <string name="title_activity_profile__page">Profile_Page</string>
     <string name="title_activity_habit_detail">habitDetail</string>
     <string name="title_activity_side_menu">ActivitySideMenu</string>

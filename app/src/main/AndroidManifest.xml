@@ -24,11 +24,11 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Friend_Page"
-            android:label="Friend Page"
+            android:label="User Profile"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Trophies"
-            android:label="@string/title_activity_trophies"
+            android:name=".Achievements"
+            android:label="@string/title_activity_achievements"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".habitDetail"

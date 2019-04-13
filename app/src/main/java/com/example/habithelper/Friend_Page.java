@@ -34,17 +34,17 @@ public class Friend_Page extends ActivitySideMenu
         FriendPageFeedList = new ArrayList<>();
         //adding some items to our list
         FriendPageFeedList.add(
-                new FriendPageFeed(1, "Ari streamed her album",
+                new FriendPageFeed(1, "Ariana streamed her album",
                         R.drawable.arigrande));
 
         FriendPageFeedList.add(
-                new FriendPageFeed(1, "Ari sprayed tan",
+                new FriendPageFeed(1, "Ariana sprayed tan",
                         R.drawable.arigrande));
         FriendPageFeedList.add(
-                new FriendPageFeed(1, "Ari wrote lyrics",
+                new FriendPageFeed(1, "Ariana wrote lyrics",
                         R.drawable.arigrande));
         FriendPageFeedList.add(
-                new FriendPageFeed(1, "Ari went on a walk",
+                new FriendPageFeed(1, "Ariana went on a walk",
                         R.drawable.arigrande));
 
         //creating recyclerview adapter
@@ -57,10 +57,10 @@ public class Friend_Page extends ActivitySideMenu
     public void toggleFriend(android.view.View view) {
         Button btn = (Button) findViewById(R.id.addfriendbtn);
 
-        if (btn.getText() == "Unfriend") {
-            btn.setText("Add Friend");
-        } else {
+        if ("Add Friend".equals(btn.getText())) {
             btn.setText("Unfriend");
+        } else {
+            btn.setText("Add Friend");
         }
     }
 }

@@ -1,6 +1,7 @@
 package com.example.habithelper;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,7 +28,7 @@ public class FriendFeedAdapter extends RecyclerView.Adapter<FriendFeedAdapter.Fr
     public FriendFeedViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //inflating and returning our view holder
         LayoutInflater inflater = LayoutInflater.from(mCtx);
-        View view = inflater.inflate(R.layout.layout_profile_feed, null);
+        View view = inflater.inflate(R.layout.layout_friend_feed, null);
         return new FriendFeedViewHolder(view);
     }
 
@@ -58,7 +59,6 @@ public class FriendFeedAdapter extends RecyclerView.Adapter<FriendFeedAdapter.Fr
             imageView = itemView.findViewById(R.id.imageView);
         }
     }
-
 }
 
 

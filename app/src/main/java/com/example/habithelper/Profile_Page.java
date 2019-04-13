@@ -136,6 +136,12 @@ public class Profile_Page extends ActivitySideMenu
     public void changePicture(android.view.View view) {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE); //IMAGE CAPTURE CODE
         startActivityForResult(intent, 0);
+    }
 
+    public void friendsButton(android.view.View view) {
+            Intent i;
+            i = new Intent(this,Friend_Feed_Page.class);
+            i.putExtra("FRIEND_LIST", true);
+            startActivity(i);
     }
 }

@@ -76,9 +76,9 @@ public class ActivitySideMenu extends AppCompatActivity
                 startActivity(i);
             }
 
-        }  else if (id == R.id.nav_trophies) {
-            if (!this.getLocalClassName().equalsIgnoreCase(Trophies.class.getSimpleName())) {
-                i = new Intent(this,Trophies.class);
+        }  else if (id == R.id.nav_achievements) {
+            if (!this.getLocalClassName().equalsIgnoreCase(Achievements.class.getSimpleName())) {
+                i = new Intent(this,Achievements.class);
                 startActivity(i);
             }
 

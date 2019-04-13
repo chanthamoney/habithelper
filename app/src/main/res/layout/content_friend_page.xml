@@ -171,7 +171,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="104dp"
                 android:onClick="toggleFriend"
-                android:text="Add Friend"
+                android:text="Unfriend"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
                 app:layout_constraintTop_toTopOf="parent" />
         </android.support.constraint.ConstraintLayout>

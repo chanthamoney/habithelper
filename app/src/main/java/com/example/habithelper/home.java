@@ -29,7 +29,7 @@ public class home extends ActivitySideMenu
         mData.add("Welcome to habit helper!\nThese are your notifications.\nLet's begin with some tips!\n TIP 1: Swipe Left to delete a notification and swipe right to save!");
 
         for (int x = 0; x < 5; x++) {
-            mData.add("NOTIF." + " " + (x + 2) + "\nThis is an example notification.");
+            mData.add("NOTIFICATION" + " " + (x + 1) + "\nThis is an example notification.");
         }
 
         mSwipeStack = (SwipeStack) findViewById(R.id.swipeStack);

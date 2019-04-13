@@ -16,13 +16,15 @@ public class Globals {
         Globals.instance = instance;
     }
 
-    private Bitmap profilePicture;
-
+    private static Bitmap profilePicture;
+    private static String profileName;
+    private static String username;
+    private static String email = "user1523@swearjarapp.com";
+    private static String bio;
 
     private Globals() {
 
     }
-
 
     public Bitmap getProfilePicture() {
         return profilePicture;
@@ -33,4 +35,38 @@ public class Globals {
         this.profilePicture = pp;
     }
 
+    public String getProfileName() {
+        return profileName;
+    }
+
+    public void setProfileName(String pn) {
+        this.profileName = pn;
+    }
+
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String un) {
+        this.username = un;
+    }
+
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String b) {
+        this.bio = b;
+    }
+
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String e) {
+        this.email = e;
+    }
 }

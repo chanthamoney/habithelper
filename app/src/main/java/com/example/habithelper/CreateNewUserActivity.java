@@ -10,9 +10,13 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 public class CreateNewUserActivity extends AppCompatActivity {
+
+    Globals sharedData = Globals.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +29,9 @@ public class CreateNewUserActivity extends AppCompatActivity {
         submitSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                sharedData.setProfileName(((EditText) findViewById(R.id.fullNameInput)).getText().toString());
+                sharedData.setUsername(((EditText) findViewById(R.id.usernameInput)).getText().toString());
+                sharedData.setBio(((EditText) findViewById(R.id.bioInput)).getText().toString());
                 Intent i = new Intent(CreateNewUserActivity.this, home.class);
                 startActivity(i);
             }

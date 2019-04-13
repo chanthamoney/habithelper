@@ -84,10 +84,17 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         });
 
         Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
+        Button mRegister = (Button) findViewById(R.id.register_btn);
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 attemptLogin();
+            }
+        });
+        mRegister.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                attemptRegister();
             }
         });
 
@@ -95,8 +102,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mProgressView = findViewById(R.id.login_progress);
 
         // TODO: CHANGE TO VIEW YOU WANT TO SEE
-        Intent i = new Intent(LoginActivity.this, CreateNewUserActivity.class);
-        startActivity(i);
+//        Intent i = new Intent(LoginActivity.this, CreateNewUserActivity.class);
+//        startActivity(i);
     }
 
     private void populateAutoComplete() {
@@ -142,6 +149,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
     }
 
+
+    private void attemptRegister() {
+        Intent i = new Intent(LoginActivity.this, CreateNewUserActivity.class);
+        startActivity(i);
+    }
 
     /**
      * Attempts to sign in or register the account specified by the login form.

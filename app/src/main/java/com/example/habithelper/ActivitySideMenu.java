@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -41,6 +42,42 @@ public class ActivitySideMenu extends AppCompatActivity
     }
 
     public void updateGlobals() {
+        ArrayList<View> profileNames = getViewsByTag((ViewGroup) ((ViewGroup) this
+                .findViewById(android.R.id.content)).getChildAt(0), "profileName");
+        for(View f : profileNames) {
+            ((TextView) f).setText(sharedData.getProfileName());
+        }
+
+        ArrayList<View> usernames = getViewsByTag((ViewGroup) ((ViewGroup) this
+                .findViewById(android.R.id.content)).getChildAt(0), "username");
+        for(View f : usernames) {
+            ((TextView) f).setText(sharedData.getUsername());
+        }
+
+
+        ArrayList<View> emails = getViewsByTag((ViewGroup) ((ViewGroup) this
+                .findViewById(android.R.id.content)).getChildAt(0), "email");
+        for(View f : emails) {
+            ((TextView) f).setText(sharedData.getEmail());
+        }
+
+        ArrayList<View> bios = getViewsByTag((ViewGroup) ((ViewGroup) this
+                .findViewById(android.R.id.content)).getChildAt(0), "bio");
+        for(View f : bios) {
+            ((TextView) f).setText(sharedData.getBio());
+        }
+
+        ArrayList<View> welcomeProfileNames = getViewsByTag((ViewGroup) ((ViewGroup) this
+                .findViewById(android.R.id.content)).getChildAt(0), "welcomeProfileName");
+        for(View f : welcomeProfileNames) {
+            if (sharedData.getProfileName().indexOf(' ') > 0) {
+                ((TextView) f).setText("Welcome Back, " + sharedData.getProfileName().substring(0, sharedData.getProfileName().indexOf(' ')) + "!");
+
+            } else {
+                ((TextView) f).setText("Welcome Back, " + sharedData.getProfileName() + "!");
+            }
+        }
+
         if(sharedData.getProfilePicture() != null) {
             ArrayList<View> profilePiks = getViewsByTag((ViewGroup) ((ViewGroup) this
                     .findViewById(android.R.id.content)).getChildAt(0), "profilePik");
@@ -110,7 +147,7 @@ public class ActivitySideMenu extends AppCompatActivity
 
         } else if (id == R.id.nav_settings) {
             if (!this.getLocalClassName().equalsIgnoreCase(SettingsActivity.class.getSimpleName())) {
-                i = new Intent(this,SettingsActivity.class);
+                i = new Intent(this, SettingsActivity.class);
                 startActivity(i);
             }
 

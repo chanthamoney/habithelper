@@ -41,6 +41,7 @@ public class ProfileFeedAdapter extends RecyclerView.Adapter<ProfileFeedAdapter.
 
         //binding the data with the viewholder views
         holder.textViewTitle.setText(profileFeed.getTitle());
+        holder.profileName.setText(sharedData.getProfileName());
 
         if(sharedData.getProfilePicture() != null && profileFeedList.get(position).getImage() == R.drawable.profilepikture) {
             holder.imageView.setImageBitmap(sharedData.getProfilePicture());
@@ -57,13 +58,16 @@ public class ProfileFeedAdapter extends RecyclerView.Adapter<ProfileFeedAdapter.
     class ProfileFeedViewHolder extends RecyclerView.ViewHolder {
 
         TextView textViewTitle;
+        TextView profileName;
         ImageView imageView;
 
         public ProfileFeedViewHolder(View itemView) {
             super(itemView);
 
             textViewTitle = itemView.findViewById(R.id.textViewTitle);
+            profileName = itemView.findViewById(R.id.profileName);
             imageView = itemView.findViewById(R.id.imageView);
+
         }
     }
 

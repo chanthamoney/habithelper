@@ -29,12 +29,14 @@
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:text="Kassi Soukaroune"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:tag="profileName" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/profileName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Kassi.Kawaii@gmail.com" />
+        android:text="Kassi.Kawaii@gmail.com"
+        android:tag="email"/>
 
 </LinearLayout>

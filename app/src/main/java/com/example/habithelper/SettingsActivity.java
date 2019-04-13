@@ -1,9 +1,12 @@
 package com.example.habithelper;
 
 import android.annotation.TargetApi;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
@@ -19,9 +22,8 @@ import android.preference.PreferenceManager;
 import android.preference.RingtonePreference;
 import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.MenuItem;
-import android.widget.Toast;
-
 import java.util.List;
 
 /**
@@ -36,6 +38,8 @@ import java.util.List;
  * API Guide</a> for more information on developing a Settings UI.
  */
 public class SettingsActivity extends AppCompatPreferenceActivity {
+
+    static Globals sharedData = Globals.getInstance();
 
     /**
      * A preference value change listener that updates the preference's summary
@@ -180,11 +184,15 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             // to their values. When their values change, their summaries are
             // updated to reflect the new value, per the Android Design
             // guidelines.
-            bindPreferenceSummaryToValue(findPreference("example_text"));
-            bindPreferenceSummaryToValue(findPreference("example_text3"));
-            bindPreferenceSummaryToValue(findPreference("example_text2"));
-            bindPreferenceSummaryToValue(findPreference("example_text4"));
+            bindPreferenceSummaryToValue(findPreference("display_name"));
+            bindPreferenceSummaryToValue(findPreference("username"));
+            bindPreferenceSummaryToValue(findPreference("email"));
+            bindPreferenceSummaryToValue(findPreference("bio"));
             bindPreferenceSummaryToValue(findPreference("example_list"));
+            findPreference("display_name").setSummary(sharedData.getProfileName());
+            findPreference("username").setSummary(sharedData.getUsername());
+            findPreference("email").setSummary(sharedData.getEmail());
+            findPreference("bio").setSummary(sharedData.getBio());
         }
 
         @Override
@@ -272,23 +280,31 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                     }
                 });
 
-        builder.setNegativeButton("Yes, delete my account.",
+        builder.setNegativeButton("Yas, delete my account.",
                 new DialogInterface.OnClickListener()
                 {
                     public void onClick(DialogInterface dialog, int id)
                     {
-                        Intent i;
-                        i = new Intent(getBaseContext(), LoginActivity.class);
-                        startActivity(i);
+                        Intent mStartActivity = new Intent(getBaseContext(), LoginActivity.class);
+                        int mPendingIntentId = 123456;
+                        PendingIntent mPendingIntent = PendingIntent.getActivity(SettingsActivity.this, mPendingIntentId, mStartActivity,
+                                PendingIntent.FLAG_CANCEL_CURRENT);
+                        AlarmManager mgr = (AlarmManager) SettingsActivity.this.getSystemService(Context.ALARM_SERVICE);
+                        mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 100, mPendingIntent);
+                        System.exit(0);
                     }
                 });
         builder.create().show();
     }
 
     public void logOut(android.view.View view) {
-        Intent i;
-        i = new Intent(getBaseContext(), LoginActivity.class);
-        startActivity(i);
+        Intent mStartActivity = new Intent(getBaseContext(), LoginActivity.class);
+        int mPendingIntentId = 123456;
+        PendingIntent mPendingIntent = PendingIntent.getActivity(SettingsActivity.this, mPendingIntentId, mStartActivity,
+                PendingIntent.FLAG_CANCEL_CURRENT);
+        AlarmManager mgr = (AlarmManager) SettingsActivity.this.getSystemService(Context.ALARM_SERVICE);
+        mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 100, mPendingIntent);
+        System.exit(0);
     }
 
     @Override
@@ -302,5 +318,22 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             return;
         }
         super.onHeaderClick(header, position);
+    }
+
+    @Override
+    public void onStop() {
+        updateGlobals();
+        super.onStop();
+        Intent i;
+        i = new Intent(this, home.class);
+        startActivity(i);
+    }
+
+    public void updateGlobals() {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        sharedData.setProfileName(prefs.getAll().get("display_name").toString());
+        sharedData.setUsername(prefs.getAll().get("username").toString());
+        sharedData.setBio(prefs.getAll().get("bio").toString());
+        sharedData.setEmail(prefs.getAll().get("email").toString());
     }
 }

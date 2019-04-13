@@ -9,44 +9,73 @@
         android:layout_height="wrap_content"
         android:layout_margin="5dp">
 
-        <RelativeLayout
-            android:id="@+id/RelativeView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="8dp">
+        <TableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="120dp"
-                android:layout_height="90dp"
-                android:padding="4dp"
-                android:src="@drawable/profilepikture"
-                android:tag="profilePik" />
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/textViewTitle"
-                android:layout_width="248dp"
-                android:layout_height="57dp"
-                android:layout_marginLeft="13dp"
-                android:layout_toRightOf="@id/imageView"
-                android:text="Kassi Washed Her Hands"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                android:textColor="#000000"
-                android:textSize="16sp" />
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="120dp"
+                    android:layout_height="90dp"
+                    android:padding="4dp"
+                    android:src="@drawable/profilepikture"
+                    android:tag="profilePik" />
 
-            <!--<TextView-->
-            <!--android:id="@+id/textViewPrice"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_below="@id/textViewRating"-->
-            <!--android:layout_marginLeft="5dp"-->
-            <!--android:layout_marginTop="5dp"-->
-            <!--android:layout_toRightOf="@id/imageView"-->
-            <!--android:text="INR 56990"-->
-            <!--android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"-->
-            <!--android:textStyle="bold" />-->
+                <RelativeLayout
+                    android:id="@+id/RelativeView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp">
 
-        </RelativeLayout>
+                    <LinearLayout
+                        android:layout_width="261dp"
+                        android:layout_height="121dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/profileName"
+                            android:layout_width="248dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="13dp"
+                            android:tag="profileName"
+                            android:text="Kassi Soukaroune"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                            android:textColor="#000000"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/textViewTitle"
+                            android:layout_width="match_parent"
+                            android:layout_height="57dp"
+                            android:layout_marginLeft="13dp"
+                            android:text="Washed Her Hands"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                            android:textColor="#000000"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <!--<TextView-->
+                    <!--android:id="@+id/textViewPrice"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_below="@id/textViewRating"-->
+                    <!--android:layout_marginLeft="5dp"-->
+                    <!--android:layout_marginTop="5dp"-->
+                    <!--android:layout_toRightOf="@id/imageView"-->
+                    <!--android:text="INR 56990"-->
+                    <!--android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"-->
+                    <!--android:textStyle="bold" />-->
+
+                </RelativeLayout>
+
+            </TableRow>
+
+        </TableLayout>
 
     </android.support.v7.widget.CardView>
 

@@ -6,6 +6,9 @@ import android.support.v7.app.AlertDialog;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 
@@ -54,6 +57,7 @@ public class home extends ActivitySideMenu
             }
         });
 
+        updateGlobals();
     }
 
     @Override

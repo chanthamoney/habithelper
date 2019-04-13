@@ -23,5 +23,4 @@ public class ProfileFeed {
         return image;
     }
 
-    public void setImage(int img) { this.image = img; }
 }

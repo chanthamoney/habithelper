@@ -8,10 +8,19 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+
+import java.util.ArrayList;
 
 public class ActivitySideMenu extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    Globals sharedData = Globals.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +36,36 @@ public class ActivitySideMenu extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        updateGlobals();
+    }
+
+    public void updateGlobals() {
+        if(sharedData.getProfilePicture() != null) {
+            ArrayList<View> profilePiks = getViewsByTag((ViewGroup) ((ViewGroup) this
+                    .findViewById(android.R.id.content)).getChildAt(0), "profilePik");
+            for(View f : profilePiks) {
+                ((ImageView) f).setImageBitmap(sharedData.getProfilePicture());
+            }
+        }
+    }
+
+    public static ArrayList<View> getViewsByTag(ViewGroup root, String tag){
+        ArrayList<View> views = new ArrayList<View>();
+        final int childCount = root.getChildCount();
+        for (int i = 0; i < childCount; i++) {
+            final View child = root.getChildAt(i);
+            if (child instanceof ViewGroup) {
+                views.addAll(getViewsByTag((ViewGroup) child, tag));
+            }
+
+            final Object tagObj = child.getTag();
+            if (tagObj != null && tagObj.equals(tag)) {
+                views.add(child);
+            }
+
+        }
+        return views;
     }
 
     @Override
@@ -39,7 +78,12 @@ public class ActivitySideMenu extends AppCompatActivity
         }
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        updateGlobals();
+        return super.onPrepareOptionsMenu(menu);
+    }
+
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.

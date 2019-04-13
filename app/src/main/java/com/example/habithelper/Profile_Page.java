@@ -1,5 +1,6 @@
 package com.example.habithelper;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -30,6 +31,8 @@ public class Profile_Page extends ActivitySideMenu
 
     //the recyclerview
     RecyclerView recyclerView;
+
+    Globals sharedData = Globals.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +69,6 @@ public class Profile_Page extends ActivitySideMenu
 
         //setting adapter to recyclerview
         recyclerView.setAdapter(adapter);
-
     }
 
     @Override
@@ -100,37 +102,25 @@ public class Profile_Page extends ActivitySideMenu
 
     }
 
-    private static ArrayList<View> getViewsByTag(ViewGroup root, String tag){
-        ArrayList<View> views = new ArrayList<View>();
-        final int childCount = root.getChildCount();
-        for (int i = 0; i < childCount; i++) {
-            final View child = root.getChildAt(i);
-            if (child instanceof ViewGroup) {
-                views.addAll(getViewsByTag((ViewGroup) child, tag));
-            }
-
-            final Object tagObj = child.getTag();
-            if (tagObj != null && tagObj.equals(tag)) {
-                views.add(child);
-            }
-
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        if (resultCode == Activity.RESULT_CANCELED) {
         }
-        return views;
-    }
+        else {
+            super.onActivityResult(requestCode,resultCode,data);
+            Bitmap bm = (Bitmap)data.getExtras().get("data");
+            Bitmap bitmap = Bitmap.createBitmap(bm, 0, (bm.getHeight()-bm.getWidth())/2, bm.getWidth(), bm.getWidth());
 
-    protected void onActivityResult(int requestCode,int resultCode,Intent data){
-        super.onActivityResult(requestCode,resultCode,data);
-        Bitmap bitmap=(Bitmap)data.getExtras().get("data");
-
-        ArrayList<View> profilePiks = getViewsByTag((ViewGroup)getWindow().getDecorView().getRootView(), "profilePik");
-        for(View f : profilePiks) {
-            ((ImageView) f).setImageBitmap(bitmap);
+            sharedData.setProfilePicture(bitmap);
+            if(bitmap != null) {
+                ArrayList<View> profilePiks = getViewsByTag((ViewGroup) ((ViewGroup) this
+                        .findViewById(android.R.id.content)).getChildAt(0), "profilePik");
+                for(View f : profilePiks) {
+                    ((ImageView) f).setImageBitmap(bitmap);
+                }
+            }
         }
-        ImageView imgView = (ImageView) findViewById(R.id.imageView);
-        imgView.setImageBitmap(bitmap);
-        imgView = (ImageView) findViewById(R.id.imageViewMenu);
-        imgView.setImageBitmap(bitmap);
-
     }
 
     public void changePicture(android.view.View view) {

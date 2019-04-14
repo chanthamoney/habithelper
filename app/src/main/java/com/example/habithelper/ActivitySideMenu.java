@@ -42,40 +42,50 @@ public class ActivitySideMenu extends AppCompatActivity
     }
 
     public void updateGlobals() {
-        ArrayList<View> profileNames = getViewsByTag((ViewGroup) ((ViewGroup) this
-                .findViewById(android.R.id.content)).getChildAt(0), "profileName");
-        for(View f : profileNames) {
-            ((TextView) f).setText(sharedData.getProfileName());
-        }
-
-        ArrayList<View> usernames = getViewsByTag((ViewGroup) ((ViewGroup) this
-                .findViewById(android.R.id.content)).getChildAt(0), "username");
-        for(View f : usernames) {
-            ((TextView) f).setText(sharedData.getUsername());
-        }
-
-
-        ArrayList<View> emails = getViewsByTag((ViewGroup) ((ViewGroup) this
-                .findViewById(android.R.id.content)).getChildAt(0), "email");
-        for(View f : emails) {
-            ((TextView) f).setText(sharedData.getEmail());
-        }
-
-        ArrayList<View> bios = getViewsByTag((ViewGroup) ((ViewGroup) this
-                .findViewById(android.R.id.content)).getChildAt(0), "bio");
-        for(View f : bios) {
-            ((TextView) f).setText(sharedData.getBio());
-        }
-
-        ArrayList<View> welcomeProfileNames = getViewsByTag((ViewGroup) ((ViewGroup) this
-                .findViewById(android.R.id.content)).getChildAt(0), "welcomeProfileName");
-        for(View f : welcomeProfileNames) {
-            if (sharedData.getProfileName().indexOf(' ') > 0) {
-                ((TextView) f).setText("Welcome Back, " + sharedData.getProfileName().substring(0, sharedData.getProfileName().indexOf(' ')) + "!");
-
-            } else {
-                ((TextView) f).setText("Welcome Back, " + sharedData.getProfileName() + "!");
+        if (sharedData.getProfileName() != null) {
+            ArrayList<View> profileNames = getViewsByTag((ViewGroup) ((ViewGroup) this
+                    .findViewById(android.R.id.content)).getChildAt(0), "profileName");
+            for(View f : profileNames) {
+                ((TextView) f).setText(sharedData.getProfileName());
             }
+        }
+
+        if (sharedData.getUsername() != null) {
+            ArrayList<View> usernames = getViewsByTag((ViewGroup) ((ViewGroup) this
+                    .findViewById(android.R.id.content)).getChildAt(0), "username");
+            for(View f : usernames) {
+                ((TextView) f).setText(sharedData.getUsername());
+            }
+        }
+
+        if (sharedData.getEmail() != null) {
+            ArrayList<View> emails = getViewsByTag((ViewGroup) ((ViewGroup) this
+                    .findViewById(android.R.id.content)).getChildAt(0), "email");
+            for(View f : emails) {
+                ((TextView) f).setText(sharedData.getEmail());
+            }
+        }
+
+        if (sharedData.getBio() != null) {
+            ArrayList<View> bios = getViewsByTag((ViewGroup) ((ViewGroup) this
+                    .findViewById(android.R.id.content)).getChildAt(0), "bio");
+            for(View f : bios) {
+                ((TextView) f).setText(sharedData.getBio());
+            }
+        }
+
+        if (sharedData.getProfileName() != null) {
+            ArrayList<View> welcomeProfileNames = getViewsByTag((ViewGroup) ((ViewGroup) this
+                    .findViewById(android.R.id.content)).getChildAt(0), "welcomeProfileName");
+            for(View f : welcomeProfileNames) {
+                if (sharedData.getProfileName().indexOf(' ') > 0) {
+                    ((TextView) f).setText("Welcome Back, " + sharedData.getProfileName().substring(0, sharedData.getProfileName().indexOf(' ')) + "!");
+
+                } else {
+                    ((TextView) f).setText("Welcome Back, " + sharedData.getProfileName() + "!");
+                }
+            }
+
         }
 
         if(sharedData.getProfilePicture() != null) {

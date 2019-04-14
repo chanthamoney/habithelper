@@ -36,6 +36,7 @@
                 android:id="@+id/username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingTop="20dp"
                 android:text="Username" />
 
             <LinearLayout
@@ -62,6 +63,7 @@
                 android:id="@+id/bio"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingTop="20dp"
                 android:text="Bio" />
 
             <EditText
@@ -77,6 +79,7 @@
                 android:id="@+id/Mode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingTop="20dp"
                 android:text="Mode" />
 
             <Spinner
@@ -85,11 +88,18 @@
                 android:layout_height="wrap_content"
                 android:spinnerMode="dropdown" />
 
-            <Button
-                android:id="@+id/submitSignIn"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Submit" />
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingTop="20dp">
+
+                <Button
+                    android:id="@+id/submitSignIn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Submit" />
+            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>

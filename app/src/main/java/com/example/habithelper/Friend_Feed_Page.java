@@ -70,19 +70,19 @@ public class Friend_Feed_Page extends ActivitySideMenu
                     friendFeedList = new ArrayList<>();
                     //adding some items to our list
                     friendFeedList.add(
-                            new FriendFeedFeed(1, "Ariana ate InNOut before her sound check.",
+                            new FriendFeedFeed(1, "Ariana Grande\nate InNOut before her sound check",
                                     R.drawable.arigrande));
 
                     friendFeedList.add(
-                            new FriendFeedFeed(1, "jvn didn't put on sunscreen.",
+                            new FriendFeedFeed(1, "Jonathan Van Ness\ndidn't put on sunscreen",
                                     R.drawable.jvn));
 
                     friendFeedList.add(
-                            new FriendFeedFeed(1, "Ariana forget to feed PiggySmalls.",
+                            new FriendFeedFeed(1, "Ariana Grande\nforgot to feed PiggySmalls",
                                     R.drawable.arigrande));
 
                     friendFeedList.add(
-                            new FriendFeedFeed(1, "Ariana didn't go to bed before 10 pm.",
+                            new FriendFeedFeed(1, "Ariana Grande\ndidn't go to bed before 10 pm",
                                     R.drawable.arigrande));
 
 
@@ -114,19 +114,19 @@ public class Friend_Feed_Page extends ActivitySideMenu
         friendFeedList = new ArrayList<>();
         //adding some items to our list
         friendFeedList.add(
-                new FriendFeedFeed(1, "Ariana ate InNOut before her sound check.",
+                new FriendFeedFeed(1, "Ariana Grande\nate InNOut before her sound check",
                         R.drawable.arigrande));
 
         friendFeedList.add(
-                new FriendFeedFeed(1, "jvn didn't put on sunscreen.",
+                new FriendFeedFeed(1, "Jonathan Van Ness\ndidn't put on sunscreen",
                         R.drawable.jvn));
 
         friendFeedList.add(
-                new FriendFeedFeed(1, "Ariana forget to feed PiggySmalls.",
+                new FriendFeedFeed(1, "Ariana Grande\nforgot to feed PiggySmalls",
                         R.drawable.arigrande));
 
         friendFeedList.add(
-                new FriendFeedFeed(1, "Ariana didn't go to bed before 10 pm.",
+                new FriendFeedFeed(1, "Ariana Grande\ndidn't go to bed before 10 pm",
                         R.drawable.arigrande));
 
 

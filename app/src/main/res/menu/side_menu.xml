@@ -6,23 +6,23 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@android:drawable/ic_menu_compass"
+            android:icon="@drawable/baseline_home_black_18dp"
             android:title="Home" />
         <item
             android:id="@+id/nav_profile"
-            android:icon="@drawable/ic_launcher_foreground"
+            android:icon="@drawable/baseline_person_outline_black_18dp"
             android:title="Profile" />
         <item
             android:id="@+id/nav_habits"
-            android:icon="@android:drawable/ic_menu_recent_history"
+            android:icon="@drawable/baseline_rowing_black_18dp"
             android:title="Habits" />
         <item
             android:id="@+id/nav_search"
-            android:icon="@android:drawable/ic_search_category_default"
+            android:icon="@drawable/baseline_search_black_18dp"
             android:title="Search People" />
         <item
             android:id="@+id/nav_achievements"
-            android:icon="@android:drawable/ic_menu_myplaces"
+            android:icon="@drawable/baseline_star_black_18dp"
             android:title="Achievements" />
         <item
             android:id="@+id/nav_settings"

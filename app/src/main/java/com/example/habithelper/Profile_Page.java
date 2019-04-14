@@ -51,17 +51,17 @@ public class Profile_Page extends ActivitySideMenu
         profileFeedList = new ArrayList<>();
         //adding some items to our list
         profileFeedList.add(
-                new ProfileFeed(1, "Kassi washed her hands",
+                new ProfileFeed(1, "Made progress on good habit \"Wash Hands\"",
                         R.drawable.profilepikture));
 
         profileFeedList.add(
-                new ProfileFeed(1, "Kassi ate an apple",
+                new ProfileFeed(1, "Made progress on good habit \"Eat Apple\"",
                         R.drawable.profilepikture));
         profileFeedList.add(
-                new ProfileFeed(1, "Kassi watched her lecture video",
+                new ProfileFeed(1, "Made progress on good habit \"Attend Lecture\"",
                         R.drawable.profilepikture));
         profileFeedList.add(
-                new ProfileFeed(1, "Kassi recycled her box of snacks",
+                new ProfileFeed(1, "Made progress on good habit \"Recycle Food Container\"",
                         R.drawable.profilepikture));
 
         //creating recyclerview adapter

@@ -40,6 +40,8 @@ import java.util.List;
 public class SettingsActivity extends AppCompatPreferenceActivity {
 
     static Globals sharedData = Globals.getInstance();
+    boolean logout = false;
+    boolean updatedData = false;
 
     /**
      * A preference value change listener that updates the preference's summary
@@ -127,6 +129,10 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setupActionBar();
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.clear();
+        editor.commit();
     }
 
     /**
@@ -165,7 +171,8 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         return PreferenceFragment.class.getName().equals(fragmentName)
                 || GeneralPreferenceFragment.class.getName().equals(fragmentName)
                 || DataSyncPreferenceFragment.class.getName().equals(fragmentName)
-                || NotificationPreferenceFragment.class.getName().equals(fragmentName);
+                || NotificationPreferenceFragment.class.getName().equals(fragmentName)
+                || MPSPreferenceFragment.class.getName().equals(fragmentName);
     }
 
     /**
@@ -190,9 +197,13 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             bindPreferenceSummaryToValue(findPreference("bio"));
             bindPreferenceSummaryToValue(findPreference("example_list"));
             findPreference("display_name").setSummary(sharedData.getProfileName());
-            findPreference("username").setSummary(sharedData.getUsername());
+            findPreference("display_name").setDefaultValue(sharedData.getProfileName());
+            findPreference("username").setSummary(sharedData.getUsername().substring(1));
+            findPreference("username").setDefaultValue(sharedData.getUsername().substring(1));
             findPreference("email").setSummary(sharedData.getEmail());
+            findPreference("email").setDefaultValue(sharedData.getEmail());
             findPreference("bio").setSummary(sharedData.getBio());
+            findPreference("bio").setDefaultValue(sharedData.getBio());
         }
 
         @Override
@@ -223,6 +234,38 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             // updated to reflect the new value, per the Android Design
             // guidelines.
             bindPreferenceSummaryToValue(findPreference("notifications_new_message_ringtone"));
+        }
+
+        @Override
+        public boolean onOptionsItemSelected(MenuItem item) {
+            int id = item.getItemId();
+            if (id == android.R.id.home) {
+                startActivity(new Intent(getActivity(), SettingsActivity.class));
+                return true;
+            }
+            return super.onOptionsItemSelected(item);
+        }
+    }
+
+
+    /**
+     * This fragment shows mobile payment system preferences only. It is used when the
+     * activity is showing a two-pane settings UI.
+     */
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    public static class MPSPreferenceFragment extends PreferenceFragment {
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            addPreferencesFromResource(R.xml.pref_mbs);
+            setHasOptionsMenu(true);
+
+            // Bind the summaries of EditText/List/Dialog/Ringtone preferences
+            // to their values. When their values change, their summaries are
+            // updated to reflect the new value, per the Android Design
+            // guidelines.
+            bindPreferenceSummaryToValue(findPreference("venmo_username"));
+            bindPreferenceSummaryToValue(findPreference("venmo_password"));
         }
 
         @Override
@@ -285,26 +328,18 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                 {
                     public void onClick(DialogInterface dialog, int id)
                     {
-                        Intent mStartActivity = new Intent(getBaseContext(), LoginActivity.class);
-                        int mPendingIntentId = 123456;
-                        PendingIntent mPendingIntent = PendingIntent.getActivity(SettingsActivity.this, mPendingIntentId, mStartActivity,
-                                PendingIntent.FLAG_CANCEL_CURRENT);
-                        AlarmManager mgr = (AlarmManager) SettingsActivity.this.getSystemService(Context.ALARM_SERVICE);
-                        mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 100, mPendingIntent);
-                        System.exit(0);
+                        logout = true;
+                        Intent i = new Intent(getBaseContext(), LoggingOut.class);
+                        startActivity(i);
                     }
                 });
         builder.create().show();
     }
 
     public void logOut(android.view.View view) {
-        Intent mStartActivity = new Intent(getBaseContext(), LoginActivity.class);
-        int mPendingIntentId = 123456;
-        PendingIntent mPendingIntent = PendingIntent.getActivity(SettingsActivity.this, mPendingIntentId, mStartActivity,
-                PendingIntent.FLAG_CANCEL_CURRENT);
-        AlarmManager mgr = (AlarmManager) SettingsActivity.this.getSystemService(Context.ALARM_SERVICE);
-        mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 100, mPendingIntent);
-        System.exit(0);
+        logout = true;
+        Intent i = new Intent(getBaseContext(), LoggingOut.class);
+        startActivity(i);
     }
 
     @Override
@@ -322,18 +357,48 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
 
     @Override
     public void onStop() {
-        updateGlobals();
-        super.onStop();
-        Intent i;
-        i = new Intent(this, home.class);
-        startActivity(i);
+        if (logout) {
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.clear();
+            editor.commit();
+            super.onStop();
+        } else {
+            updateGlobals();
+            super.onStop();
+
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.clear();
+            editor.commit();
+
+            if (updatedData) {
+                Intent i;
+                i = new Intent(this, home.class);
+                startActivity(i);
+            }
+        }
     }
 
     public void updateGlobals() {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        sharedData.setProfileName(prefs.getAll().get("display_name").toString());
-        sharedData.setUsername(prefs.getAll().get("username").toString());
-        sharedData.setBio(prefs.getAll().get("bio").toString());
-        sharedData.setEmail(prefs.getAll().get("email").toString());
+        if(prefs.getAll().get("display_name") != null) {
+            sharedData.setProfileName(prefs.getAll().get("display_name").toString());
+            updatedData = true;
+        }
+        if(prefs.getAll().get("username") != null) {
+            sharedData.setUsername(prefs.getAll().get("username").toString());
+            updatedData = true;
+        }
+        if(prefs.getAll().get("bio") != null) {
+            sharedData.setBio(prefs.getAll().get("bio").toString());
+            updatedData = true;
+
+        }
+        if(prefs.getAll().get("email") != null) {
+            sharedData.setEmail(prefs.getAll().get("email").toString());
+            updatedData = true;
+
+        }
     }
 }

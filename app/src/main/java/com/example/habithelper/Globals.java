@@ -49,7 +49,7 @@ public class Globals {
     }
 
     public void setUsername(String un) {
-        this.username = un;
+        this.username = "@" + un;
     }
 
 
@@ -68,5 +68,13 @@ public class Globals {
 
     public void setEmail(String e) {
         this.email = e;
+    }
+
+    public void clear(){
+        profilePicture = null;
+        username = null;
+        bio = null;
+        profileName = null;
+        email = "user1523@swearjarapp.com";
     }
 }

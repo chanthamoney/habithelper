@@ -34,17 +34,17 @@ public class Friend_Page extends ActivitySideMenu
         FriendPageFeedList = new ArrayList<>();
         //adding some items to our list
         FriendPageFeedList.add(
-                new FriendPageFeed(1, "Ariana streamed her album",
+                new FriendPageFeed(1, "Made progress on good habit \"Stream Album\"",
                         R.drawable.arigrande));
 
         FriendPageFeedList.add(
-                new FriendPageFeed(1, "Ariana sprayed tan",
+                new FriendPageFeed(1, "Was penalized for her habit \"Too much spray tan\"",
                         R.drawable.arigrande));
         FriendPageFeedList.add(
-                new FriendPageFeed(1, "Ariana wrote lyrics",
+                new FriendPageFeed(1, "Made progress on good habit \"Write Lyrics\"",
                         R.drawable.arigrande));
         FriendPageFeedList.add(
-                new FriendPageFeed(1, "Ariana went on a walk",
+                new FriendPageFeed(1, "Made progress on good habit \"Walking in Nature\"",
                         R.drawable.arigrande));
 
         //creating recyclerview adapter

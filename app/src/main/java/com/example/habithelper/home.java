@@ -30,8 +30,9 @@ public class home extends ActivitySideMenu
 
         mData = new ArrayList<String>();
         mData.add("Welcome to habit helper!\nThese are your notifications.\nLet's begin with some tips!\n TIP 1: Swipe Left to delete a notification and swipe right to save!");
+        mData.add("TIP 2\nTry clicking on the jar above this notification to see your jar's transaction history.");
 
-        for (int x = 0; x < 5; x++) {
+        for (int x = 1; x < 5; x++) {
             mData.add("NOTIFICATION" + " " + (x + 1) + "\nThis is an example notification.");
         }
 

@@ -24,7 +24,7 @@
     <string name="title_activity_habit_detail">habitDetail</string>
     <string name="title_activity_side_menu">ActivitySideMenu</string>
     <string name="jar_amount"><b>Jar Total:</b> <font color='#ff0000'>$6.00</font></string>
-    <string name="jar_history">4/14/19 - Brush Teeth 3x <font  color='#00ff00'>$3\n</font>4/10/19 - Sleeping In <font color='#ff0000'>$3\n</font>4/9/19 - Sleeping In <font  color='#ff0000'>$3\n</font>4/2/19 - Sleeping In<font  color='#ff0000'>$3</font></string>
+    <string name="jar_history">4/14/19 - Brush Teeth 3x <font color='#00ff00'>$3\n</font>4/10/19 - Sleeping In <font color='#ff0000'>$3\n</font>4/9/19 - Sleeping In <font color='#ff0000'>$3\n</font>4/2/19 - Sleeping In<font color='#ff0000'>$3</font></string>
     <string name="title_activity_settings">Settings</string>
 
     <!-- Strings related to Settings -->

@@ -25,31 +25,48 @@ public class CreateNewUserActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Button submitSignIn = (Button) findViewById(R.id.submitSignIn);
-        submitSignIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                sharedData.setProfileName(((EditText) findViewById(R.id.fullNameInput)).getText().toString());
-                sharedData.setUsername(((EditText) findViewById(R.id.usernameInput)).getText().toString());
-                sharedData.setBio(((EditText) findViewById(R.id.bioInput)).getText().toString());
-                Intent i = new Intent(CreateNewUserActivity.this, home.class);
-                startActivity(i);
-            }
-        });
-
         String[] arraySpinner = new String[] {
-                "Good Habits", "Bad Habits", "Charity"
+                "", "Good Habits", "Bad Habits", "Charity"
         };
         final Spinner s = (Spinner) findViewById(R.id.spinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, arraySpinner);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         s.setAdapter(adapter);
+
+        Button submitSignIn = (Button) findViewById(R.id.submitSignIn);
+        submitSignIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (s.getSelectedItem().toString().equals("")) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(CreateNewUserActivity.this);
+                    builder.setTitle("No Mode Selected");
+                    builder.setIcon(R.drawable.jar);
+                    builder.setMessage("Please select a mode to continue.");
+                    builder.setPositiveButton("OK",
+                            new DialogInterface.OnClickListener()
+                            {
+                                public void onClick(DialogInterface dialog, int id)
+                                {
+                                    dialog.cancel();
+                                }
+                            });
+                    builder.create().show();
+                } else {
+                    sharedData.setProfileName(((EditText) findViewById(R.id.fullNameInput)).getText().toString());
+                    sharedData.setUsername(((EditText) findViewById(R.id.usernameInput)).getText().toString());
+                    sharedData.setBio(((EditText) findViewById(R.id.bioInput)).getText().toString());
+                    Intent i = new Intent(CreateNewUserActivity.this, home.class);
+                    startActivity(i);
+                }
+            }
+        });
+
         s.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Object selectedItem = s.getSelectedItem();
-                if (selectedItem.toString().equals("Charity")) {
+                if (selectedItem.toString().equals("Charity Mode")) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(CreateNewUserActivity.this);
                     builder.setTitle("Are you sure?");
                     builder.setIcon(R.drawable.jar);
@@ -69,6 +86,34 @@ public class CreateNewUserActivity extends AppCompatActivity {
                                 public void onClick(DialogInterface dialog, int id)
                                 {
                                     s.setSelection(0);
+                                    dialog.cancel();
+                                }
+                            });
+                    builder.create().show();
+                } else if (selectedItem.toString().equals("Bad Habits")) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(CreateNewUserActivity.this);
+                    builder.setTitle("Bad Habits Mode");
+                    builder.setIcon(R.drawable.jar);
+                    builder.setMessage("This is the simplest mode. You will be charged money to put in the jar every time you break a bad habit.");
+                    builder.setPositiveButton("OK",
+                            new DialogInterface.OnClickListener()
+                            {
+                                public void onClick(DialogInterface dialog, int id)
+                                {
+                                    dialog.cancel();
+                                }
+                            });
+                    builder.create().show();
+                }  else if (selectedItem.toString().equals("Good Habits")) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(CreateNewUserActivity.this);
+                    builder.setTitle("Good Habits Mode");
+                    builder.setIcon(R.drawable.jar);
+                    builder.setMessage("This mode is similar to Bad Habits but with the addition of good habits. By completing good habits you can earn back money from bad habits.");
+                    builder.setPositiveButton("OK",
+                            new DialogInterface.OnClickListener()
+                            {
+                                public void onClick(DialogInterface dialog, int id)
+                                {
                                     dialog.cancel();
                                 }
                             });

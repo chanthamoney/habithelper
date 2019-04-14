@@ -40,6 +40,8 @@ import static android.Manifest.permission.READ_CONTACTS;
  */
 public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
 
+    Globals sharedData = Globals.getInstance();
+
     /**
      * Id to identity READ_CONTACTS permission request.
      */
@@ -104,6 +106,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         // TODO: CHANGE TO VIEW YOU WANT TO SEE
 //        Intent i = new Intent(LoginActivity.this, CreateNewUserActivity.class);
 //        startActivity(i);
+
+        sharedData.clear();
     }
 
     private void populateAutoComplete() {

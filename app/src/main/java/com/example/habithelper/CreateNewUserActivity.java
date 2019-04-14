@@ -41,8 +41,36 @@ public class CreateNewUserActivity extends AppCompatActivity {
                 if (s.getSelectedItem().toString().equals("")) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(CreateNewUserActivity.this);
                     builder.setTitle("No Mode Selected");
-                    builder.setIcon(R.drawable.jar);
+                    builder.setIcon(R.drawable.baseline_error_black_18dp);
                     builder.setMessage("Please select a mode to continue.");
+                    builder.setPositiveButton("OK",
+                            new DialogInterface.OnClickListener()
+                            {
+                                public void onClick(DialogInterface dialog, int id)
+                                {
+                                    dialog.cancel();
+                                }
+                            });
+                    builder.create().show();
+                } else if (((EditText) findViewById(R.id.fullNameInput)).getText().toString().equals("")) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(CreateNewUserActivity.this);
+                    builder.setTitle("Empty Profile Name");
+                    builder.setIcon(R.drawable.baseline_error_black_18dp);
+                    builder.setMessage("Please input your full name.");
+                    builder.setPositiveButton("OK",
+                            new DialogInterface.OnClickListener()
+                            {
+                                public void onClick(DialogInterface dialog, int id)
+                                {
+                                    dialog.cancel();
+                                }
+                            });
+                    builder.create().show();
+                } else if (((EditText) findViewById(R.id.usernameInput)).getText().toString().equals("")) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(CreateNewUserActivity.this);
+                    builder.setTitle("Empty Username");
+                    builder.setIcon(R.drawable.baseline_error_black_18dp);
+                    builder.setMessage("Please a valid username.");
                     builder.setPositiveButton("OK",
                             new DialogInterface.OnClickListener()
                             {

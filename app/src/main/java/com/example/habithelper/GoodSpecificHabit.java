@@ -34,6 +34,6 @@ public class GoodSpecificHabit extends AppCompatActivity {
                         }
                     }
                 });
-        builder.create().show();
+        builder.show();
     }
 }

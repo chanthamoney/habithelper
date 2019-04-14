@@ -104,6 +104,6 @@ public class Friend_Friend_Page extends ActivitySideMenu
                         dialog.cancel();
                     }
                 });
-        builder.create().show();
+        builder.show();
     }
 }

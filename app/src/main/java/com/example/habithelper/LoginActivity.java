@@ -103,10 +103,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
 
-//         TODO: CHANGE TO VIEW YOU WANT TO SEE
-//        Intent i = new Intent(LoginActivity.this, home.class);
-//        startActivity(i);
-
         sharedData.clear();
     }
 
@@ -389,8 +385,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         protected void onPostExecute(final Boolean success) {
             mAuthTask = null;
             showProgress(false);
-            mPasswordView.setError(getString(R.string.error_incorrect_password));
-            mPasswordView.requestFocus();
+            //         TODO: CHANGE TO VIEW YOU WANT TO SEE AFTER "SIGNING IN"
+            Intent i = new Intent(LoginActivity.this, home.class);
+            startActivity(i);
 
 
 //            if (success) {

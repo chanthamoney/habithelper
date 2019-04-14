@@ -112,9 +112,9 @@ public class home extends ActivitySideMenu
                                         dialog.cancel();
                                     }
                                 });
-                        builder.create().show();
+                        builder.show();
                     }
                 });
-        builder.create().show();
+        builder.show();
     }
 }

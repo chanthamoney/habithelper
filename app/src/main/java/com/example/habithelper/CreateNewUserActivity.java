@@ -51,7 +51,7 @@ public class CreateNewUserActivity extends AppCompatActivity {
                                     dialog.cancel();
                                 }
                             });
-                    builder.create().show();
+                    builder.show();
                 } else if (((EditText) findViewById(R.id.fullNameInput)).getText().toString().equals("")) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(CreateNewUserActivity.this);
                     builder.setTitle("Empty Profile Name");
@@ -65,7 +65,7 @@ public class CreateNewUserActivity extends AppCompatActivity {
                                     dialog.cancel();
                                 }
                             });
-                    builder.create().show();
+                    builder.show();
                 } else if (((EditText) findViewById(R.id.usernameInput)).getText().toString().equals("")) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(CreateNewUserActivity.this);
                     builder.setTitle("Empty Username");
@@ -79,7 +79,7 @@ public class CreateNewUserActivity extends AppCompatActivity {
                                     dialog.cancel();
                                 }
                             });
-                    builder.create().show();
+                    builder.show();
                 } else {
                     sharedData.setProfileName(((EditText) findViewById(R.id.fullNameInput)).getText().toString());
                     sharedData.setUsername(((EditText) findViewById(R.id.usernameInput)).getText().toString());
@@ -117,7 +117,7 @@ public class CreateNewUserActivity extends AppCompatActivity {
                                     dialog.cancel();
                                 }
                             });
-                    builder.create().show();
+                    builder.show();
                 } else if (selectedItem.toString().equals("Bad Habits")) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(CreateNewUserActivity.this);
                     builder.setTitle("Bad Habits Mode");
@@ -131,7 +131,7 @@ public class CreateNewUserActivity extends AppCompatActivity {
                                     dialog.cancel();
                                 }
                             });
-                    builder.create().show();
+                    builder.show();
                 }  else if (selectedItem.toString().equals("Good Habits")) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(CreateNewUserActivity.this);
                     builder.setTitle("Good Habits Mode");
@@ -145,7 +145,7 @@ public class CreateNewUserActivity extends AppCompatActivity {
                                     dialog.cancel();
                                 }
                             });
-                    builder.create().show();
+                    builder.show();
                 }
             }
 

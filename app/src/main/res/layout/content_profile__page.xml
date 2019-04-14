@@ -58,7 +58,7 @@
             <TextView
                 android:id="@+id/profileName"
                 android:layout_width="wrap_content"
-                android:layout_height="23dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:contentDescription="User's Name"
                 android:gravity="center"
@@ -74,6 +74,8 @@
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+
+                android:layout_marginTop="4dp"
                 android:tag="username"
                 android:text="\@KassiSouk"
                 tools:layout_editor_absoluteX="180dp"
@@ -84,6 +86,7 @@
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
                 android:tag="bio"
                 android:text="CSCI 5115 / Minneapolis"
                 tools:layout_editor_absoluteX="128dp"

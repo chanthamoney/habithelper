@@ -333,7 +333,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                         startActivity(i);
                     }
                 });
-        builder.create().show();
+        builder.show();
     }
 
     public void logOut(android.view.View view) {
@@ -374,7 +374,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                             dialog.cancel();
                         }
                     });
-            builder.create().show();
+            builder.show();
         }
         super.onHeaderClick(header, position);
     }

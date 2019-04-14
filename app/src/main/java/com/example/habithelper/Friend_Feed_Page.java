@@ -138,6 +138,6 @@ public class Friend_Feed_Page extends ActivitySideMenu
                         dialog.cancel();
                     }
                 });
-        builder.create().show();
+        builder.show();
     }
 }

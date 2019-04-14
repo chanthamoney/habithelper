@@ -21,11 +21,11 @@ public class Globals {
         Globals.instance = instance;
     }
 
-    private static Bitmap profilePicture;
-    private static String profileName;
-    private static String username;
-    private static String email = "user1523@swearjarapp.com";
-    private static String bio;
+    private Bitmap profilePicture;
+    private String profileName;
+    private String username;
+    private String email;
+    private String bio;
 
     private Globals() {
 
@@ -41,7 +41,7 @@ public class Globals {
     }
 
     public String getProfileName() {
-        return profileName;
+        return profileName != null ? profileName : "Kassi Soukaroune";
     }
 
     public void setProfileName(String pn) {
@@ -50,7 +50,7 @@ public class Globals {
 
 
     public String getUsername() {
-        return username;
+        return username != null ? username : "@KassiSouk";
     }
 
     public void setUsername(String un) {
@@ -59,7 +59,7 @@ public class Globals {
 
 
     public String getBio() {
-        return bio;
+        return bio != null ? bio : "I didn't say yee";
     }
 
     public void setBio(String b) {
@@ -68,7 +68,7 @@ public class Globals {
 
 
     public String getEmail() {
-        return email;
+        return email != null ? email : "Kassi Soukaroune";
     }
 
     public void setEmail(String e) {

@@ -36,7 +36,7 @@ public class BadSpecificHabit extends AppCompatActivity {
                         }
                     }
                 });
-        builder.create().show();
+        builder.show();
     }
 
 }

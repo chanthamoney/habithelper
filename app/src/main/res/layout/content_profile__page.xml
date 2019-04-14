@@ -12,9 +12,10 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="682dp"
+        android:layout_height="0dp"
         android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        >
 
         <RelativeLayout
             android:id="@+id/relativeLayout"
@@ -38,12 +39,12 @@
 
             <ImageView
                 android:id="@+id/imageEditIcon"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:layout_alignStart="@+id/imageView"
                 android:layout_alignLeft="@+id/imageView"
-                android:layout_marginLeft="100dp"
-                android:layout_marginTop="100dp"
+                android:layout_marginLeft="115dp"
+                android:layout_marginTop="115dp"
                 android:scaleType="centerInside"
                 android:src="@android:drawable/ic_menu_edit" />
         </RelativeLayout>
@@ -137,13 +138,16 @@
 
         </RelativeLayout>
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:layout_editor_absoluteX="39dp"
-            tools:layout_editor_absoluteY="562dp" />
-
     </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
 </android.support.constraint.ConstraintLayout>

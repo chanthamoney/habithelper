@@ -13,72 +13,65 @@
         android:layout_height="wrap_content"
         android:layout_margin="5dp">
 
-        <TableLayout
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingBottom="8dp">
+            android:orientation="horizontal">
 
-            <TableRow
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:padding="4dp"
+                android:src="@drawable/profilepikture" />
 
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="120dp"
-                    android:layout_height="90dp"
-                    android:padding="4dp"
-                    android:src="@drawable/profilepikture" />
+            <RelativeLayout
+                android:id="@+id/RelativeView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="8dp">
 
-                <RelativeLayout
-                    android:id="@+id/RelativeView"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="8dp">
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                    <LinearLayout
-                        android:layout_width="261dp"
+                    <TextView
+                        android:id="@+id/friendname"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:layout_marginLeft="13dp"
+                        android:text="Kassi Soukaroune"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                        android:textColor="#000000"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
-                        <TextView
-                            android:id="@+id/friendname"
-                            android:layout_width="248dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="13dp"
-                            android:text="Kassi Soukaroune"
-                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                            android:textColor="#000000"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/friendmessage"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="13dp"
+                        android:text="Washed Her Hands"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                        android:textColor="#000000"
+                        android:textSize="16sp" />
+                </LinearLayout>
 
-                        <TextView
-                            android:id="@+id/friendmessage"
-                            android:layout_width="232dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="13dp"
-                            android:text="Washed Her Hands"
-                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                            android:textColor="#000000"
-                            android:textSize="16sp" />
-                    </LinearLayout>
+                <!--<TextView-->
+                <!--android:id="@+id/textViewPrice"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@id/textViewRating"-->
+                <!--android:layout_marginLeft="5dp"-->
+                <!--android:layout_marginTop="5dp"-->
+                <!--android:layout_toRightOf="@id/imageView"-->
+                <!--android:text="INR 56990"-->
+                <!--android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"-->
+                <!--android:textStyle="bold" />-->
 
-                    <!--<TextView-->
-                    <!--android:id="@+id/textViewPrice"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_below="@id/textViewRating"-->
-                    <!--android:layout_marginLeft="5dp"-->
-                    <!--android:layout_marginTop="5dp"-->
-                    <!--android:layout_toRightOf="@id/imageView"-->
-                    <!--android:text="INR 56990"-->
-                    <!--android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"-->
-                    <!--android:textStyle="bold" />-->
-
-                </RelativeLayout>
-
-            </TableRow>
-
-        </TableLayout>
+            </RelativeLayout>
+        </LinearLayout>
 
     </android.support.v7.widget.CardView>
 

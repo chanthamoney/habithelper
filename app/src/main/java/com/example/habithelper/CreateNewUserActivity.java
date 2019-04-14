@@ -94,7 +94,7 @@ public class CreateNewUserActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Object selectedItem = s.getSelectedItem();
-                if (selectedItem.toString().equals("Charity Mode")) {
+                if (selectedItem.toString().equals("Charity")) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(CreateNewUserActivity.this);
                     builder.setTitle("Are you sure?");
                     builder.setIcon(R.drawable.jar);

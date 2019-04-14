@@ -22,22 +22,22 @@
 
             <ImageButton
                 android:id="@+id/achievement1"
-                android:layout_width="144dp"
-                android:layout_height="139dp"
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
                 android:layout_weight="1"
                 android:onClick="achievementDialog"
                 android:src="@android:drawable/btn_star_big_on" />
 
             <ImageButton
                 android:id="@+id/secret2"
-                android:layout_width="2dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:src="@android:drawable/ic_secure" />
 
             <ImageButton
                 android:id="@+id/secret3"
-                android:layout_width="131dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:src="@android:drawable/ic_secure" />
@@ -49,21 +49,21 @@
 
             <ImageButton
                 android:id="@+id/secret4"
-                android:layout_width="144dp"
-                android:layout_height="139dp"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
                 android:layout_weight="1"
                 android:src="@android:drawable/ic_secure" />
 
             <ImageButton
                 android:id="@+id/secret5"
-                android:layout_width="142dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:src="@android:drawable/ic_secure" />
 
             <ImageButton
                 android:id="@+id/secret6"
-                android:layout_width="131dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:src="@android:drawable/ic_secure" />
@@ -75,21 +75,21 @@
 
             <ImageButton
                 android:id="@+id/secret7"
-                android:layout_width="144dp"
-                android:layout_height="139dp"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
                 android:layout_weight="1"
                 android:src="@android:drawable/ic_secure" />
 
             <ImageButton
                 android:id="@+id/secret8"
-                android:layout_width="142dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:src="@android:drawable/ic_secure" />
 
             <ImageButton
                 android:id="@+id/secret9"
-                android:layout_width="131dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:src="@android:drawable/ic_secure" />

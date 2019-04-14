@@ -2,12 +2,14 @@ package com.example.habithelper;
 
 public class FriendFeedFeed {
     private int id;
-    private String title;
+    private String name;
+    private String message;
     private int image;
 
-    public FriendFeedFeed(int id, String title, int image) {
+    public FriendFeedFeed(int id, String name, String message, int image) {
         this.id = id;
-        this.title = title;
+        this.name = name;
+        this.message = message;
         this.image = image;
     }
 
@@ -15,8 +17,12 @@ public class FriendFeedFeed {
         return id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
+    }
+
+    public String getMessage() {
+        return message;
     }
 
     public int getImage() {

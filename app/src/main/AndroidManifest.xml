@@ -24,8 +24,12 @@
             android:label="Profile Page"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Friend_Page"
-            android:label="User Profile"
+            android:name=".Friend_Page_Ariana"
+            android:label="Ariana Grande"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Friend_Page_JVN"
+            android:label="Jonathan Van Ness"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Achievements"

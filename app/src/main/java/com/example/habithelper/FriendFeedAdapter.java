@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -38,8 +39,10 @@ public class FriendFeedAdapter extends RecyclerView.Adapter<FriendFeedAdapter.Fr
         FriendFeedFeed friendFeedFeed = friendFeedList.get(position);
 
         //binding the data with the viewholder views
-        holder.textViewTitle.setText(friendFeedFeed.getTitle());
+        holder.name.setText(friendFeedFeed.getName());
+        holder.message.setText(friendFeedFeed.getMessage());
         holder.imageView.setImageDrawable(mCtx.getResources().getDrawable(friendFeedFeed.getImage()));
+        holder.linearlayout.setTag(friendFeedFeed.getName());
     }
 
     @Override
@@ -49,14 +52,18 @@ public class FriendFeedAdapter extends RecyclerView.Adapter<FriendFeedAdapter.Fr
 
     class FriendFeedViewHolder extends RecyclerView.ViewHolder {
 
-        TextView textViewTitle;
+        TextView name;
+        TextView message;
         ImageView imageView;
+        LinearLayout linearlayout;
 
         public FriendFeedViewHolder(View itemView) {
             super(itemView);
 
-            textViewTitle = itemView.findViewById(R.id.textViewTitle);
+            name = itemView.findViewById(R.id.friendname);
+            message = itemView.findViewById(R.id.friendmessage);
             imageView = itemView.findViewById(R.id.imageView);
+            linearlayout = itemView.getRootView().findViewById(R.id.fll);
         }
     }
 }

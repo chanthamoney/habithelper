@@ -9,7 +9,7 @@ import android.widget.Button;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Friend_Page extends ActivitySideMenu
+public class Friend_Page_JVN extends ActivitySideMenu
         implements NavigationView.OnNavigationItemSelectedListener {
     //a list to store all the Friend Profile Feed Posts
     List<FriendPageFeed> FriendPageFeedList;
@@ -19,7 +19,7 @@ public class Friend_Page extends ActivitySideMenu
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_friend_page);
+        setContentView(R.layout.activity_friend_page_jvn);
         super.onCreate(savedInstanceState);
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -34,18 +34,17 @@ public class Friend_Page extends ActivitySideMenu
         FriendPageFeedList = new ArrayList<>();
         //adding some items to our list
         FriendPageFeedList.add(
-                new FriendPageFeed(1, "Made progress on good habit \"Stream Album\"",
-                        R.drawable.arigrande));
-
+                new FriendPageFeed(1, "Johnathan Van Ness","Made progress on good habit \"Listen to Beyonceé\"",
+                        R.drawable.jvn));
         FriendPageFeedList.add(
-                new FriendPageFeed(1, "Was penalized for her habit \"Too much spray tan\"",
-                        R.drawable.arigrande));
+                new FriendPageFeed(1, "Johnathan Van Ness","Was penalized for habit \"Saying Queen\"",
+                        R.drawable.jvn));
         FriendPageFeedList.add(
-                new FriendPageFeed(1, "Made progress on good habit \"Write Lyrics\"",
-                        R.drawable.arigrande));
+                new FriendPageFeed(1, "Johnathan Van Ness","Made progress on good habit \"Wear Sunscreen\"",
+                        R.drawable.jvn));
         FriendPageFeedList.add(
-                new FriendPageFeed(1, "Made progress on good habit \"Walking in Nature\"",
-                        R.drawable.arigrande));
+                new FriendPageFeed(1, "Johnathan Van Ness","Made progress on good habit \"Walking in Nature\"",
+                        R.drawable.jvn));
 
         //creating recyclerview adapter
         FriendPageFeedAdapter adapter = new FriendPageFeedAdapter(this, FriendPageFeedList);
@@ -62,5 +61,9 @@ public class Friend_Page extends ActivitySideMenu
         } else {
             btn.setText("Add Friend");
         }
+    }
+
+    public void openFriendProfile(android.view.View view) {
+
     }
 }

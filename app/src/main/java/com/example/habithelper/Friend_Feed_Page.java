@@ -10,11 +10,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,11 +43,11 @@ public class Friend_Feed_Page extends ActivitySideMenu
                     friendFeedList = new ArrayList<>();
                     //adding some items to our list
                     friendFeedList.add(
-                            new FriendFeedFeed(1, "@AriGrande - Ariana Grande",
+                            new FriendFeedFeed(1, "Ariana Grande","@AriGrande",
                                     R.drawable.arigrande));
 
                     friendFeedList.add(
-                            new FriendFeedFeed(1, "@JVN - Jonathan Van Ness",
+                            new FriendFeedFeed(1, "Jonathan Van Ness","@JVN",
                                     R.drawable.jvn));
 
                     //creating recyclerview adapter
@@ -70,21 +65,20 @@ public class Friend_Feed_Page extends ActivitySideMenu
                     friendFeedList = new ArrayList<>();
                     //adding some items to our list
                     friendFeedList.add(
-                            new FriendFeedFeed(1, "Ariana Grande\nate InNOut before her sound check",
+                            new FriendFeedFeed(1, "Ariana Grande", "ate InNOut before her sound check",
                                     R.drawable.arigrande));
 
                     friendFeedList.add(
-                            new FriendFeedFeed(1, "Jonathan Van Ness\ndidn't put on sunscreen",
+                            new FriendFeedFeed(1, "Jonathan Van Ness", "didn't put on sunscreen",
                                     R.drawable.jvn));
 
                     friendFeedList.add(
-                            new FriendFeedFeed(1, "Ariana Grande\nforgot to feed PiggySmalls",
+                            new FriendFeedFeed(1, "Ariana Grande", "forgot to feed PiggySmalls",
                                     R.drawable.arigrande));
 
                     friendFeedList.add(
-                            new FriendFeedFeed(1, "Ariana Grande\ndidn't go to bed before 10 pm",
+                            new FriendFeedFeed(1, "Ariana Grande","didn't go to bed before 10 pm",
                                     R.drawable.arigrande));
-
 
                     //creating recyclerview adapter
                     FriendFeedAdapter adapter = new FriendFeedAdapter(getBaseContext(), friendFeedList);
@@ -114,19 +108,19 @@ public class Friend_Feed_Page extends ActivitySideMenu
         friendFeedList = new ArrayList<>();
         //adding some items to our list
         friendFeedList.add(
-                new FriendFeedFeed(1, "Ariana Grande\nate InNOut before her sound check",
+                new FriendFeedFeed(1, "Ariana Grande", "ate InNOut before her sound check",
                         R.drawable.arigrande));
 
         friendFeedList.add(
-                new FriendFeedFeed(1, "Jonathan Van Ness\ndidn't put on sunscreen",
+                new FriendFeedFeed(1, "Jonathan Van Ness", "didn't put on sunscreen",
                         R.drawable.jvn));
 
         friendFeedList.add(
-                new FriendFeedFeed(1, "Ariana Grande\nforgot to feed PiggySmalls",
+                new FriendFeedFeed(1, "Ariana Grande", "forgot to feed PiggySmalls",
                         R.drawable.arigrande));
 
         friendFeedList.add(
-                new FriendFeedFeed(1, "Ariana Grande\ndidn't go to bed before 10 pm",
+                new FriendFeedFeed(1, "Ariana Grande","didn't go to bed before 10 pm",
                         R.drawable.arigrande));
 
 
@@ -153,8 +147,13 @@ public class Friend_Feed_Page extends ActivitySideMenu
     }
 
     public void openFriendProfile(android.view.View view) {
-        Intent i = new Intent(this,Friend_Page.class);
-        startActivity(i);
+        if (view.getTag().equals("Ariana Grande")) {
+            Intent i = new Intent(this, Friend_Page_Ariana.class);
+            startActivity(i);
+        } else {
+            Intent i = new Intent(this, Friend_Page_JVN.class);
+            startActivity(i);
+        }
     }
 
     public void onClickSearch(android.view.View view) {

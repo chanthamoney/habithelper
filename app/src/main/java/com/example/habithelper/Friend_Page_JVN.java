@@ -55,7 +55,7 @@ public class Friend_Page_JVN extends ActivitySideMenu
     }
 
     public void toggleFriend(android.view.View view) {
-        Button btn = (Button) findViewById(R.id.addfriendbtn);
+        Button btn = (Button) findViewById(R.id.addfriendbtn4);
 
         if ("Add Friend".equals(btn.getText())) {
             btn.setText("Unfriend");

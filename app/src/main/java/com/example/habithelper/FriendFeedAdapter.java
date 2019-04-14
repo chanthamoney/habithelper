@@ -1,7 +1,6 @@
 package com.example.habithelper;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,13 +12,11 @@ import android.widget.TextView;
 import java.util.List;
 
 public class FriendFeedAdapter extends RecyclerView.Adapter<FriendFeedAdapter.FriendFeedViewHolder> {
+    Globals sharedData = Globals.getInstance();
     //this context we will use to inflate the layout
     private Context mCtx;
-
     //we are storing all the products in a list
     private List<FriendFeedFeed> friendFeedList;
-
-    Globals sharedData = Globals.getInstance();
 
     //getting the context and product list with constructor
     public FriendFeedAdapter(Context mCtx, List<FriendFeedFeed> friendFeedList) {

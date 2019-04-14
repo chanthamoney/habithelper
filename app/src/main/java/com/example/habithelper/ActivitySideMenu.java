@@ -8,7 +8,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,6 +21,24 @@ public class ActivitySideMenu extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     Globals sharedData = Globals.getInstance();
+
+    public static ArrayList<View> getViewsByTag(ViewGroup root, String tag) {
+        ArrayList<View> views = new ArrayList<View>();
+        final int childCount = root.getChildCount();
+        for (int i = 0; i < childCount; i++) {
+            final View child = root.getChildAt(i);
+            if (child instanceof ViewGroup) {
+                views.addAll(getViewsByTag((ViewGroup) child, tag));
+            }
+
+            final Object tagObj = child.getTag();
+            if (tagObj != null && tagObj.equals(tag)) {
+                views.add(child);
+            }
+
+        }
+        return views;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +62,7 @@ public class ActivitySideMenu extends AppCompatActivity
         if (sharedData.getProfileName() != null) {
             ArrayList<View> profileNames = getViewsByTag((ViewGroup) ((ViewGroup) this
                     .findViewById(android.R.id.content)).getChildAt(0), "profileName");
-            for(View f : profileNames) {
+            for (View f : profileNames) {
                 ((TextView) f).setText(sharedData.getProfileName());
             }
         }
@@ -53,7 +70,7 @@ public class ActivitySideMenu extends AppCompatActivity
         if (sharedData.getUsername() != null) {
             ArrayList<View> usernames = getViewsByTag((ViewGroup) ((ViewGroup) this
                     .findViewById(android.R.id.content)).getChildAt(0), "username");
-            for(View f : usernames) {
+            for (View f : usernames) {
                 ((TextView) f).setText(sharedData.getUsername());
             }
         }
@@ -61,7 +78,7 @@ public class ActivitySideMenu extends AppCompatActivity
         if (sharedData.getEmail() != null) {
             ArrayList<View> emails = getViewsByTag((ViewGroup) ((ViewGroup) this
                     .findViewById(android.R.id.content)).getChildAt(0), "email");
-            for(View f : emails) {
+            for (View f : emails) {
                 ((TextView) f).setText(sharedData.getEmail());
             }
         }
@@ -69,7 +86,7 @@ public class ActivitySideMenu extends AppCompatActivity
         if (sharedData.getBio() != null) {
             ArrayList<View> bios = getViewsByTag((ViewGroup) ((ViewGroup) this
                     .findViewById(android.R.id.content)).getChildAt(0), "bio");
-            for(View f : bios) {
+            for (View f : bios) {
                 ((TextView) f).setText(sharedData.getBio());
             }
         }
@@ -77,7 +94,7 @@ public class ActivitySideMenu extends AppCompatActivity
         if (sharedData.getProfileName() != null) {
             ArrayList<View> welcomeProfileNames = getViewsByTag((ViewGroup) ((ViewGroup) this
                     .findViewById(android.R.id.content)).getChildAt(0), "welcomeProfileName");
-            for(View f : welcomeProfileNames) {
+            for (View f : welcomeProfileNames) {
                 if (sharedData.getProfileName().indexOf(' ') > 0) {
                     ((TextView) f).setText("Welcome Back, " + sharedData.getProfileName().substring(0, sharedData.getProfileName().indexOf(' ')) + "!");
 
@@ -88,31 +105,13 @@ public class ActivitySideMenu extends AppCompatActivity
 
         }
 
-        if(sharedData.getProfilePicture() != null) {
+        if (sharedData.getProfilePicture() != null) {
             ArrayList<View> profilePiks = getViewsByTag((ViewGroup) ((ViewGroup) this
                     .findViewById(android.R.id.content)).getChildAt(0), "profilePik");
-            for(View f : profilePiks) {
+            for (View f : profilePiks) {
                 ((ImageView) f).setImageBitmap(sharedData.getProfilePicture());
             }
         }
-    }
-
-    public static ArrayList<View> getViewsByTag(ViewGroup root, String tag){
-        ArrayList<View> views = new ArrayList<View>();
-        final int childCount = root.getChildCount();
-        for (int i = 0; i < childCount; i++) {
-            final View child = root.getChildAt(i);
-            if (child instanceof ViewGroup) {
-                views.addAll(getViewsByTag((ViewGroup) child, tag));
-            }
-
-            final Object tagObj = child.getTag();
-            if (tagObj != null && tagObj.equals(tag)) {
-                views.add(child);
-            }
-
-        }
-        return views;
     }
 
     @Override
@@ -139,19 +138,19 @@ public class ActivitySideMenu extends AppCompatActivity
 
         if (id == R.id.nav_profile) {
             if (!this.getLocalClassName().equalsIgnoreCase(Profile_Page.class.getSimpleName())) {
-                i = new Intent(this,Profile_Page.class);
+                i = new Intent(this, Profile_Page.class);
                 startActivity(i);
             }
 
         } else if (id == R.id.nav_habits) {
             if (!this.getLocalClassName().equalsIgnoreCase(home.class.getSimpleName())) {
-                i = new Intent(this,home.class);
+                i = new Intent(this, home.class);
                 startActivity(i);
             }
 
         } else if (id == R.id.nav_search) {
             if (!this.getLocalClassName().equalsIgnoreCase(Friend_Feed_Page.class.getSimpleName())) {
-                i = new Intent(this,Friend_Feed_Page.class);
+                i = new Intent(this, Friend_Feed_Page.class);
                 startActivity(i);
             }
 
@@ -163,13 +162,13 @@ public class ActivitySideMenu extends AppCompatActivity
 
         } else if (id == R.id.nav_home) {
             if (!this.getLocalClassName().equalsIgnoreCase(home.class.getSimpleName())) {
-                i = new Intent(this,home.class);
+                i = new Intent(this, home.class);
                 startActivity(i);
             }
 
-        }  else if (id == R.id.nav_achievements) {
+        } else if (id == R.id.nav_achievements) {
             if (!this.getLocalClassName().equalsIgnoreCase(Achievements.class.getSimpleName())) {
-                i = new Intent(this,Achievements.class);
+                i = new Intent(this, Achievements.class);
                 startActivity(i);
             }
 
@@ -183,7 +182,7 @@ public class ActivitySideMenu extends AppCompatActivity
     public void clickProfile(android.view.View view) {
         if (!this.getLocalClassName().equalsIgnoreCase(Profile_Page.class.getSimpleName())) {
             Intent i;
-            i = new Intent(this,Profile_Page.class);
+            i = new Intent(this, Profile_Page.class);
             startActivity(i);
         }
     }

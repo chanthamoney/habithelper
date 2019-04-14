@@ -4,7 +4,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
@@ -37,16 +36,16 @@ public class Friend_Friend_Page extends ActivitySideMenu
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        if(is_ariana) {
+        if (is_ariana) {
             //initializing the productlist
             friendFeedList = new ArrayList<>();
             //adding some items to our list
             friendFeedList.add(
-                    new FriendFeedFeed(1, "Jonathan Van Ness","@JVN",
+                    new FriendFeedFeed(1, "Jonathan Van Ness", "@JVN",
                             R.drawable.jvn));
 
             friendFeedList.add(
-                    new FriendFeedFeed(2, sharedData.getProfileName(),sharedData.getUsername(),
+                    new FriendFeedFeed(2, sharedData.getProfileName(), sharedData.getUsername(),
                             R.drawable.profilepikture));
 
         } else {
@@ -54,11 +53,11 @@ public class Friend_Friend_Page extends ActivitySideMenu
             friendFeedList = new ArrayList<>();
             //adding some items to our list
             friendFeedList.add(
-                    new FriendFeedFeed(1, "Ariana Grande","@AriGrande",
+                    new FriendFeedFeed(1, "Ariana Grande", "@AriGrande",
                             R.drawable.arigrande));
 
             friendFeedList.add(
-                    new FriendFeedFeed(2, sharedData.getProfileName(),sharedData.getUsername(),
+                    new FriendFeedFeed(2, sharedData.getProfileName(), sharedData.getUsername(),
                             R.drawable.profilepikture));
         }
 
@@ -97,10 +96,8 @@ public class Friend_Friend_Page extends ActivitySideMenu
         builder.setTitle("Oh no!");
         builder.setMessage("This feature would allow you to search your feed or friends.");
         builder.setPositiveButton("OK",
-                new DialogInterface.OnClickListener()
-                {
-                    public void onClick(DialogInterface dialog, int id)
-                    {
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
                     }
                 });

@@ -1,8 +1,6 @@
 package com.example.habithelper;
 
 import android.annotation.TargetApi;
-import android.app.AlarmManager;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -16,14 +14,14 @@ import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
-import android.support.v7.app.ActionBar;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.preference.RingtonePreference;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.MenuItem;
+
 import java.util.List;
 
 /**
@@ -38,10 +36,6 @@ import java.util.List;
  * API Guide</a> for more information on developing a Settings UI.
  */
 public class SettingsActivity extends AppCompatPreferenceActivity {
-
-    static Globals sharedData = Globals.getInstance();
-    boolean logout = false;
-    boolean updatedData = false;
 
     /**
      * A preference value change listener that updates the preference's summary
@@ -94,6 +88,9 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             return true;
         }
     };
+    static Globals sharedData = Globals.getInstance();
+    boolean logout = false;
+    boolean updatedData = false;
 
     /**
      * Helper method to determine if the device has an extra-large screen. For
@@ -175,6 +172,115 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                 || MPSPreferenceFragment.class.getName().equals(fragmentName);
     }
 
+    public void deleteAccount(android.view.View view) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(SettingsActivity.this);
+        builder.setTitle("Are you sure?");
+        builder.setIcon(R.drawable.ic_delete_black_24dp);
+        builder.setMessage("Deleting your account is an irreversible action. None of your account information will be able to be retrieved again.");
+        builder.setPositiveButton("Cancel",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+
+        builder.setNegativeButton("Yas, delete my account.",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        logout = true;
+                        Intent i = new Intent(getBaseContext(), LoggingOut.class);
+                        startActivity(i);
+                    }
+                });
+        builder.show();
+    }
+
+    public void logOut(android.view.View view) {
+        logout = true;
+        Intent i = new Intent(getBaseContext(), LoggingOut.class);
+        startActivity(i);
+    }
+
+    @Override
+    public void onHeaderClick(Header header, int position) {
+        if ("Log out".equals(header.title)) {
+            logOut(getListView());
+            return;
+        }
+        if ("Delete Account".equals(header.title)) {
+            deleteAccount(getListView());
+            return;
+        }
+        if ("Cash Out".equals(header.title)) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(SettingsActivity.this);
+            builder.setTitle("Are you sure?");
+            builder.setIcon(R.drawable.jar);
+            builder.setMessage("Cashing out your jar will remove your entire transaction history and move any funds back to your mobile payment system.");
+            builder.setPositiveButton("Cancel",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+
+            builder.setNegativeButton("Yes, cash out.",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+            builder.show();
+        }
+        super.onHeaderClick(header, position);
+    }
+
+    @Override
+    public void onStop() {
+        if (logout) {
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.clear();
+            editor.commit();
+            super.onStop();
+        } else {
+            updateGlobals();
+            super.onStop();
+
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.clear();
+            editor.commit();
+
+            if (updatedData) {
+                Intent i;
+                i = new Intent(this, home.class);
+                startActivity(i);
+            }
+        }
+    }
+
+    public void updateGlobals() {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        if (prefs.getAll().get("display_name") != null) {
+            sharedData.setProfileName(prefs.getAll().get("display_name").toString());
+            updatedData = true;
+        }
+        if (prefs.getAll().get("username") != null) {
+            sharedData.setUsername(prefs.getAll().get("username").toString());
+            updatedData = true;
+        }
+        if (prefs.getAll().get("bio") != null) {
+            sharedData.setBio(prefs.getAll().get("bio").toString());
+            updatedData = true;
+
+        }
+        if (prefs.getAll().get("email") != null) {
+            sharedData.setEmail(prefs.getAll().get("email").toString());
+            updatedData = true;
+
+        }
+    }
+
     /**
      * This fragment shows general preferences only. It is used when the
      * activity is showing a two-pane settings UI.
@@ -247,7 +353,6 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         }
     }
 
-
     /**
      * This fragment shows mobile payment system preferences only. It is used when the
      * activity is showing a two-pane settings UI.
@@ -306,123 +411,6 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                 return true;
             }
             return super.onOptionsItemSelected(item);
-        }
-    }
-
-    public void deleteAccount(android.view.View view) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(SettingsActivity.this);
-        builder.setTitle("Are you sure?");
-        builder.setIcon(R.drawable.ic_delete_black_24dp);
-        builder.setMessage("Deleting your account is an irreversible action. None of your account information will be able to be retrieved again.");
-        builder.setPositiveButton("Cancel",
-                new DialogInterface.OnClickListener()
-                {
-                    public void onClick(DialogInterface dialog, int id)
-                    {
-                        dialog.cancel();
-                    }
-                });
-
-        builder.setNegativeButton("Yas, delete my account.",
-                new DialogInterface.OnClickListener()
-                {
-                    public void onClick(DialogInterface dialog, int id)
-                    {
-                        logout = true;
-                        Intent i = new Intent(getBaseContext(), LoggingOut.class);
-                        startActivity(i);
-                    }
-                });
-        builder.show();
-    }
-
-    public void logOut(android.view.View view) {
-        logout = true;
-        Intent i = new Intent(getBaseContext(), LoggingOut.class);
-        startActivity(i);
-    }
-
-    @Override
-    public void onHeaderClick(Header header, int position) {
-        if ("Log out".equals(header.title)) {
-            logOut(getListView());
-            return;
-        }
-        if ("Delete Account".equals(header.title)) {
-            deleteAccount(getListView());
-            return;
-        }
-        if ("Cash Out".equals(header.title)) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(SettingsActivity.this);
-            builder.setTitle("Are you sure?");
-            builder.setIcon(R.drawable.jar);
-            builder.setMessage("Cashing out your jar will remove your entire transaction history and move any funds back to your mobile payment system.");
-            builder.setPositiveButton("Cancel",
-                    new DialogInterface.OnClickListener()
-                    {
-                        public void onClick(DialogInterface dialog, int id)
-                        {
-                            dialog.cancel();
-                        }
-                    });
-
-            builder.setNegativeButton("Yes, cash out.",
-                    new DialogInterface.OnClickListener()
-                    {
-                        public void onClick(DialogInterface dialog, int id)
-                        {
-                            dialog.cancel();
-                        }
-                    });
-            builder.show();
-        }
-        super.onHeaderClick(header, position);
-    }
-
-    @Override
-    public void onStop() {
-        if (logout) {
-            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-            SharedPreferences.Editor editor = prefs.edit();
-            editor.clear();
-            editor.commit();
-            super.onStop();
-        } else {
-            updateGlobals();
-            super.onStop();
-
-            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-            SharedPreferences.Editor editor = prefs.edit();
-            editor.clear();
-            editor.commit();
-
-            if (updatedData) {
-                Intent i;
-                i = new Intent(this, home.class);
-                startActivity(i);
-            }
-        }
-    }
-
-    public void updateGlobals() {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        if(prefs.getAll().get("display_name") != null) {
-            sharedData.setProfileName(prefs.getAll().get("display_name").toString());
-            updatedData = true;
-        }
-        if(prefs.getAll().get("username") != null) {
-            sharedData.setUsername(prefs.getAll().get("username").toString());
-            updatedData = true;
-        }
-        if(prefs.getAll().get("bio") != null) {
-            sharedData.setBio(prefs.getAll().get("bio").toString());
-            updatedData = true;
-
-        }
-        if(prefs.getAll().get("email") != null) {
-            sharedData.setEmail(prefs.getAll().get("email").toString());
-            updatedData = true;
-
         }
     }
 }

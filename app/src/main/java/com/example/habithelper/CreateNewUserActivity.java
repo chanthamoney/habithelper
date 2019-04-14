@@ -12,7 +12,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 public class CreateNewUserActivity extends AppCompatActivity {
 
@@ -25,7 +24,7 @@ public class CreateNewUserActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        String[] arraySpinner = new String[] {
+        String[] arraySpinner = new String[]{
                 "", "Good Habits", "Bad Habits", "Charity"
         };
         final Spinner s = (Spinner) findViewById(R.id.spinner);
@@ -44,10 +43,8 @@ public class CreateNewUserActivity extends AppCompatActivity {
                     builder.setIcon(R.drawable.baseline_error_black_18dp);
                     builder.setMessage("Please select a mode to continue.");
                     builder.setPositiveButton("OK",
-                            new DialogInterface.OnClickListener()
-                            {
-                                public void onClick(DialogInterface dialog, int id)
-                                {
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
                                     dialog.cancel();
                                 }
                             });
@@ -58,10 +55,8 @@ public class CreateNewUserActivity extends AppCompatActivity {
                     builder.setIcon(R.drawable.baseline_error_black_18dp);
                     builder.setMessage("Please input your full name.");
                     builder.setPositiveButton("OK",
-                            new DialogInterface.OnClickListener()
-                            {
-                                public void onClick(DialogInterface dialog, int id)
-                                {
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
                                     dialog.cancel();
                                 }
                             });
@@ -72,10 +67,8 @@ public class CreateNewUserActivity extends AppCompatActivity {
                     builder.setIcon(R.drawable.baseline_error_black_18dp);
                     builder.setMessage("Please a valid username.");
                     builder.setPositiveButton("OK",
-                            new DialogInterface.OnClickListener()
-                            {
-                                public void onClick(DialogInterface dialog, int id)
-                                {
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
                                     dialog.cancel();
                                 }
                             });
@@ -100,19 +93,15 @@ public class CreateNewUserActivity extends AppCompatActivity {
                     builder.setIcon(R.drawable.jar);
                     builder.setMessage("Charity mode will immediately donate your funds from the jar to the Ronald McDonald House.");
                     builder.setPositiveButton("OK",
-                            new DialogInterface.OnClickListener()
-                            {
-                                public void onClick(DialogInterface dialog, int id)
-                                {
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
                                     dialog.cancel();
                                 }
                             });
 
                     builder.setNegativeButton("Cancel",
-                            new DialogInterface.OnClickListener()
-                            {
-                                public void onClick(DialogInterface dialog, int id)
-                                {
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
                                     s.setSelection(0);
                                     dialog.cancel();
                                 }
@@ -124,24 +113,20 @@ public class CreateNewUserActivity extends AppCompatActivity {
                     builder.setIcon(R.drawable.jar);
                     builder.setMessage("This is the simplest mode. You will be charged money to put in the jar every time you break a bad habit.");
                     builder.setPositiveButton("OK",
-                            new DialogInterface.OnClickListener()
-                            {
-                                public void onClick(DialogInterface dialog, int id)
-                                {
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
                                     dialog.cancel();
                                 }
                             });
                     builder.show();
-                }  else if (selectedItem.toString().equals("Good Habits")) {
+                } else if (selectedItem.toString().equals("Good Habits")) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(CreateNewUserActivity.this);
                     builder.setTitle("Good Habits Mode");
                     builder.setIcon(R.drawable.jar);
                     builder.setMessage("This mode is similar to Bad Habits but with the addition of good habits. By completing good habits you can earn back money from bad habits.");
                     builder.setPositiveButton("OK",
-                            new DialogInterface.OnClickListener()
-                            {
-                                public void onClick(DialogInterface dialog, int id)
-                                {
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
                                     dialog.cancel();
                                 }
                             });

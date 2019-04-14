@@ -35,16 +35,16 @@ public class Friend_Page_JVN extends ActivitySideMenu
         FriendPageFeedList = new ArrayList<>();
         //adding some items to our list
         FriendPageFeedList.add(
-                new FriendPageFeed(1, "Johnathan Van Ness","Made progress on good habit of \"Listening to Beyoncé\"",
+                new FriendPageFeed(1, "Johnathan Van Ness", "Made progress on good habit of \"Listening to Beyoncé\"",
                         R.drawable.jvn));
         FriendPageFeedList.add(
-                new FriendPageFeed(1, "Johnathan Van Ness","Was penalized for habit of \"Saying Queen\"",
+                new FriendPageFeed(1, "Johnathan Van Ness", "Was penalized for habit of \"Saying Queen\"",
                         R.drawable.jvn));
         FriendPageFeedList.add(
-                new FriendPageFeed(1, "Johnathan Van Ness","Made progress on good habit of \"Wearing Sunscreen\"",
+                new FriendPageFeed(1, "Johnathan Van Ness", "Made progress on good habit of \"Wearing Sunscreen\"",
                         R.drawable.jvn));
         FriendPageFeedList.add(
-                new FriendPageFeed(1, "Johnathan Van Ness","Made progress on good habit of \"Walking in Nature\"",
+                new FriendPageFeed(1, "Johnathan Van Ness", "Made progress on good habit of \"Walking in Nature\"",
                         R.drawable.jvn));
 
         //creating recyclerview adapter

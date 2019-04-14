@@ -2,13 +2,10 @@ package com.example.habithelper;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.support.v7.app.AlertDialog;
 
 import java.util.ArrayList;
 
@@ -77,38 +74,30 @@ public class home extends ActivitySideMenu
         builder.setIcon(R.drawable.jar);
         builder.setMessage(R.string.jar_history);
         builder.setPositiveButton("Exit",
-                new DialogInterface.OnClickListener()
-                {
-                    public void onClick(DialogInterface dialog, int id)
-                    {
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
                     }
                 });
 
         builder.setNegativeButton("Cash Out",
-                new DialogInterface.OnClickListener()
-                {
-                    public void onClick(DialogInterface dialog, int id)
-                    {
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
                         AlertDialog.Builder builder = new AlertDialog.Builder(home.this);
                         builder.setTitle("Are you sure?");
                         builder.setIcon(R.drawable.jar);
                         builder.setMessage("Cashing out your jar will remove your entire transaction history and move any funds back to your mobile payment system.");
                         builder.setPositiveButton("Cancel",
-                                new DialogInterface.OnClickListener()
-                                {
-                                    public void onClick(DialogInterface dialog, int id)
-                                    {
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
                                         dialog.cancel();
                                     }
                                 });
 
                         builder.setNegativeButton("Yes, cash out.",
-                                new DialogInterface.OnClickListener()
-                                {
-                                    public void onClick(DialogInterface dialog, int id)
-                                    {
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
                                         dialog.cancel();
                                     }
                                 });

@@ -34,5 +34,7 @@ public class FriendFeedFeed {
         return image;
     }
 
-    public String getTag() { return tag; }
+    public String getTag() {
+        return tag;
+    }
 }

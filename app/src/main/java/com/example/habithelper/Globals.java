@@ -11,6 +11,14 @@ public class Globals {
 
 
     private static Globals instance = new Globals();
+    private Bitmap profilePicture;
+    private String profileName;
+    private String username;
+    private String email;
+    private String bio;
+    private Globals() {
+
+    }
 
     // Getter-Setters
     public static Globals getInstance() {
@@ -19,16 +27,6 @@ public class Globals {
 
     public static void setInstance(Globals instance) {
         Globals.instance = instance;
-    }
-
-    private Bitmap profilePicture;
-    private String profileName;
-    private String username;
-    private String email;
-    private String bio;
-
-    private Globals() {
-
     }
 
     public Bitmap getProfilePicture() {
@@ -75,7 +73,7 @@ public class Globals {
         this.email = e;
     }
 
-    public void clear(){
+    public void clear() {
         profilePicture = null;
         username = null;
         bio = null;

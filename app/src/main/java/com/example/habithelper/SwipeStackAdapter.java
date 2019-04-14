@@ -52,8 +52,7 @@ public class SwipeStackAdapter extends BaseAdapter {
         return convertView;
     }
 
-    public void remove(int position)
-    {
+    public void remove(int position) {
         toRemove.add(new Integer(position));
     }
 

@@ -3,18 +3,13 @@ package com.example.habithelper;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -98,25 +93,23 @@ public class Profile_Page extends ActivitySideMenu
         return super.onOptionsItemSelected(item);
     }
 
-    public void open(){
+    public void open() {
 
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data)
-    {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == Activity.RESULT_CANCELED) {
-        }
-        else {
-            super.onActivityResult(requestCode,resultCode,data);
-            Bitmap bm = (Bitmap)data.getExtras().get("data");
-            Bitmap bitmap = Bitmap.createBitmap(bm, 0, (bm.getHeight()-bm.getWidth())/2, bm.getWidth(), bm.getWidth());
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
+            Bitmap bm = (Bitmap) data.getExtras().get("data");
+            Bitmap bitmap = Bitmap.createBitmap(bm, 0, (bm.getHeight() - bm.getWidth()) / 2, bm.getWidth(), bm.getWidth());
 
             sharedData.setProfilePicture(bitmap);
-            if(bitmap != null) {
+            if (bitmap != null) {
                 ArrayList<View> profilePiks = getViewsByTag((ViewGroup) ((ViewGroup) this
                         .findViewById(android.R.id.content)).getChildAt(0), "profilePik");
-                for(View f : profilePiks) {
+                for (View f : profilePiks) {
                     ((ImageView) f).setImageBitmap(bitmap);
                 }
             }
@@ -129,9 +122,9 @@ public class Profile_Page extends ActivitySideMenu
     }
 
     public void friendsButton(android.view.View view) {
-            Intent i;
-            i = new Intent(this,Friend_Feed_Page.class);
-            i.putExtra("FRIEND_LIST", true);
-            startActivity(i);
+        Intent i;
+        i = new Intent(this, Friend_Feed_Page.class);
+        i.putExtra("FRIEND_LIST", true);
+        startActivity(i);
     }
 }

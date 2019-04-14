@@ -8,17 +8,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ProfileFeedAdapter extends RecyclerView.Adapter<ProfileFeedAdapter.ProfileFeedViewHolder> {
+    Globals sharedData = Globals.getInstance();
     //this context we will use to inflate the layout
     private Context mCtx;
-
     //we are storing all the products in a list
     private List<ProfileFeed> profileFeedList;
-
-    Globals sharedData = Globals.getInstance();
 
     //getting the context and product list with constructor
     public ProfileFeedAdapter(Context mCtx, List<ProfileFeed> profileFeedList) {
@@ -43,7 +40,7 @@ public class ProfileFeedAdapter extends RecyclerView.Adapter<ProfileFeedAdapter.
         holder.textViewTitle.setText(profileFeed.getTitle());
         holder.profileName.setText(sharedData.getProfileName());
 
-        if(sharedData.getProfilePicture() != null && profileFeedList.get(position).getImage() == R.drawable.profilepikture) {
+        if (sharedData.getProfilePicture() != null && profileFeedList.get(position).getImage() == R.drawable.profilepikture) {
             holder.imageView.setImageBitmap(sharedData.getProfilePicture());
         } else {
             holder.imageView.setImageDrawable(mCtx.getResources().getDrawable(profileFeed.getImage()));

@@ -352,6 +352,30 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             deleteAccount(getListView());
             return;
         }
+        if ("Cash Out".equals(header.title)) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(SettingsActivity.this);
+            builder.setTitle("Are you sure?");
+            builder.setIcon(R.drawable.jar);
+            builder.setMessage("Cashing out your jar will remove your entire transaction history and move any funds back to your mobile payment system.");
+            builder.setPositiveButton("Cancel",
+                    new DialogInterface.OnClickListener()
+                    {
+                        public void onClick(DialogInterface dialog, int id)
+                        {
+                            dialog.cancel();
+                        }
+                    });
+
+            builder.setNegativeButton("Yes, cash out.",
+                    new DialogInterface.OnClickListener()
+                    {
+                        public void onClick(DialogInterface dialog, int id)
+                        {
+                            dialog.cancel();
+                        }
+                    });
+            builder.create().show();
+        }
         super.onHeaderClick(header, position);
     }
 

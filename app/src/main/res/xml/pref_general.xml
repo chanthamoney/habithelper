@@ -57,6 +57,6 @@
         android:key="example_list"
         android:negativeButtonText="@null"
         android:positiveButtonText="@null"
-        android:title="What Mode for Swear Jar?" />
+        android:title="Swear Jar Mode" />
 
 </PreferenceScreen>

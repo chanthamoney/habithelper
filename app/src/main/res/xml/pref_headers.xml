@@ -29,5 +29,9 @@
         android:icon="@drawable/ic_enhanced_encryption_black_24dp"
         android:title="Log out"
         />
+    <header
+        android:icon="@drawable/baseline_attach_money_black_18dp"
+        android:title="Cash Out"
+        />
 
 </preference-headers>

@@ -98,7 +98,7 @@ public class CreateNewUserActivity extends AppCompatActivity {
                     AlertDialog.Builder builder = new AlertDialog.Builder(CreateNewUserActivity.this);
                     builder.setTitle("Are you sure?");
                     builder.setIcon(R.drawable.jar);
-                    builder.setMessage("Charity mode will immediately donate your funds from the jar to the Ronald McDonald House Charity.");
+                    builder.setMessage("Charity mode will immediately donate your funds from the jar to the Ronald McDonald House.");
                     builder.setPositiveButton("OK",
                             new DialogInterface.OnClickListener()
                             {

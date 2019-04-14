@@ -389,22 +389,25 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         protected void onPostExecute(final Boolean success) {
             mAuthTask = null;
             showProgress(false);
+            mPasswordView.setError(getString(R.string.error_incorrect_password));
+            mPasswordView.requestFocus();
 
-            if (success) {
-                if (mNewLogin) {
-                    Intent i = new Intent(LoginActivity.this, CreateNewUserActivity.class);
-                    startActivity(i);
 
-                } else {
-                    mPasswordView.setError("Hello John");
-                    mPasswordView.requestFocus();
-
-                }
-
-            } else {
-                mPasswordView.setError(getString(R.string.error_incorrect_password));
-                mPasswordView.requestFocus();
-            }
+//            if (success) {
+//                if (mNewLogin) {
+//                    Intent i = new Intent(LoginActivity.this, CreateNewUserActivity.class);
+//                    startActivity(i);
+//
+//                } else {
+//                    mPasswordView.setError("Hello John");
+//                    mPasswordView.requestFocus();
+//
+//                }
+//
+//            } else {
+//                mPasswordView.setError(getString(R.string.error_incorrect_password));
+//                mPasswordView.requestFocus();
+//            }
         }
 
         @Override

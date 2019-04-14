@@ -28,6 +28,10 @@
             android:label="Ariana Grande"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name=".Friend_Friend_Page"
+            android:label="Friend's Friends"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".Friend_Page_JVN"
             android:label="Jonathan Van Ness"
             android:theme="@style/AppTheme.NoActionBar" />

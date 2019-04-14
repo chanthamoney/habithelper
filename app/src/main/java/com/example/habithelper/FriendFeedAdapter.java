@@ -19,6 +19,8 @@ public class FriendFeedAdapter extends RecyclerView.Adapter<FriendFeedAdapter.Fr
     //we are storing all the products in a list
     private List<FriendFeedFeed> friendFeedList;
 
+    Globals sharedData = Globals.getInstance();
+
     //getting the context and product list with constructor
     public FriendFeedAdapter(Context mCtx, List<FriendFeedFeed> friendFeedList) {
         this.mCtx = mCtx;
@@ -41,8 +43,16 @@ public class FriendFeedAdapter extends RecyclerView.Adapter<FriendFeedAdapter.Fr
         //binding the data with the viewholder views
         holder.name.setText(friendFeedFeed.getName());
         holder.message.setText(friendFeedFeed.getMessage());
-        holder.imageView.setImageDrawable(mCtx.getResources().getDrawable(friendFeedFeed.getImage()));
         holder.linearlayout.setTag(friendFeedFeed.getName());
+        if (friendFeedFeed.getId() >= 8) {
+            holder.imageView.setTag(friendFeedFeed.getTag());
+
+            if (sharedData.getProfilePicture() != null) {
+                holder.imageView.setImageBitmap(sharedData.getProfilePicture());
+            }
+        } else {
+            holder.imageView.setImageDrawable(mCtx.getResources().getDrawable(friendFeedFeed.getImage()));
+        }
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.example.habithelper;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v7.widget.LinearLayoutManager;
@@ -34,17 +35,17 @@ public class Friend_Page_Ariana extends ActivitySideMenu
         FriendPageFeedList = new ArrayList<>();
         //adding some items to our list
         FriendPageFeedList.add(
-                new FriendPageFeed(1, "Ariana Grande","Made progress on good habit \"Stream Album\"",
+                new FriendPageFeed(1, "Ariana Grande","Made progress on good habit of \"Streaming Album\"",
                         R.drawable.arigrande));
 
         FriendPageFeedList.add(
-                new FriendPageFeed(1, "Ariana Grande","Was penalized for habit \"Too much spray tan\"",
+                new FriendPageFeed(2, "Ariana Grande","Was penalized for habit of \"Using too much spray tan\"",
                         R.drawable.arigrande));
         FriendPageFeedList.add(
-                new FriendPageFeed(1, "Ariana Grande","Made progress on good habit \"Write Lyrics\"",
+                new FriendPageFeed(3, "Ariana Grande","Made progress on good habit of \"Writing Lyrics\"",
                         R.drawable.arigrande));
         FriendPageFeedList.add(
-                new FriendPageFeed(1, "Ariana Grande","Made progress on good habit \"Walking in Nature\"",
+                new FriendPageFeed(4, "Ariana Grande","Made progress on good habit of \"Walking in Nature\"",
                         R.drawable.arigrande));
 
         //creating recyclerview adapter
@@ -62,6 +63,12 @@ public class Friend_Page_Ariana extends ActivitySideMenu
         } else {
             btn.setText("Add Friend");
         }
+    }
+    public void clickFriendBtn(android.view.View view) {
+        Intent i;
+        i = new Intent(this, Friend_Friend_Page.class);
+        i.putExtra("ARIANA", true);
+        startActivity(i);
     }
 
     public void openFriendProfile(android.view.View view) {

@@ -12,12 +12,15 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 public class Friend_Feed_Page extends ActivitySideMenu
         implements NavigationView.OnNavigationItemSelectedListener {
     //a list to store all the Friend Feed Posts
     List<FriendFeedFeed> friendFeedList;
+    List<FriendFeedFeed> friendList;
 
     //the recyclerview
     RecyclerView recyclerView;
@@ -40,18 +43,17 @@ public class Friend_Feed_Page extends ActivitySideMenu
             public void onTabSelected(TabLayout.Tab tab) {
                 if ("List".equals(tab.getText())) {
                     //initializing the productlist
-                    friendFeedList = new ArrayList<>();
+                    friendList = new ArrayList<>();
                     //adding some items to our list
-                    friendFeedList.add(
-                            new FriendFeedFeed(1, "Ariana Grande","@AriGrande",
+                    friendList.add(
+                            new FriendFeedFeed(1, "Ariana Grande", "@arigrande",
                                     R.drawable.arigrande));
-
-                    friendFeedList.add(
-                            new FriendFeedFeed(1, "Jonathan Van Ness","@JVN",
+                    friendList.add(
+                            new FriendFeedFeed(2, "Jonathan Van Ness", "@jvn",
                                     R.drawable.jvn));
 
                     //creating recyclerview adapter
-                    FriendFeedAdapter adapter = new FriendFeedAdapter(getBaseContext(), friendFeedList);
+                    FriendFeedAdapter adapter = new FriendFeedAdapter(getBaseContext(), friendList);
 
                     //setting adapter to recyclerview
                     recyclerView.setAdapter(adapter);
@@ -61,24 +63,7 @@ public class Friend_Feed_Page extends ActivitySideMenu
                     recyclerView.setHasFixedSize(true);
                     recyclerView.setLayoutManager(new LinearLayoutManager(getBaseContext()));
 
-                    //initializing the productlist
-                    friendFeedList = new ArrayList<>();
-                    //adding some items to our list
-                    friendFeedList.add(
-                            new FriendFeedFeed(1, "Ariana Grande", "ate InNOut before her sound check",
-                                    R.drawable.arigrande));
-
-                    friendFeedList.add(
-                            new FriendFeedFeed(1, "Jonathan Van Ness", "didn't put on sunscreen",
-                                    R.drawable.jvn));
-
-                    friendFeedList.add(
-                            new FriendFeedFeed(1, "Ariana Grande", "forgot to feed PiggySmalls",
-                                    R.drawable.arigrande));
-
-                    friendFeedList.add(
-                            new FriendFeedFeed(1, "Ariana Grande","didn't go to bed before 10 pm",
-                                    R.drawable.arigrande));
+                    friendFeedList = sharedData.getFriendFeedList();
 
                     //creating recyclerview adapter
                     FriendFeedAdapter adapter = new FriendFeedAdapter(getBaseContext(), friendFeedList);
@@ -104,25 +89,7 @@ public class Friend_Feed_Page extends ActivitySideMenu
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        //initializing the productlist
-        friendFeedList = new ArrayList<>();
-        //adding some items to our list
-        friendFeedList.add(
-                new FriendFeedFeed(1, "Ariana Grande", "ate InNOut before her sound check",
-                        R.drawable.arigrande));
-
-        friendFeedList.add(
-                new FriendFeedFeed(1, "Jonathan Van Ness", "didn't put on sunscreen",
-                        R.drawable.jvn));
-
-        friendFeedList.add(
-                new FriendFeedFeed(1, "Ariana Grande", "forgot to feed PiggySmalls",
-                        R.drawable.arigrande));
-
-        friendFeedList.add(
-                new FriendFeedFeed(1, "Ariana Grande","didn't go to bed before 10 pm",
-                        R.drawable.arigrande));
-
+        friendFeedList = sharedData.getFriendFeedList();
 
         //creating recyclerview adapter
         FriendFeedAdapter adapter = new FriendFeedAdapter(this, friendFeedList);
@@ -150,8 +117,11 @@ public class Friend_Feed_Page extends ActivitySideMenu
         if (view.getTag().equals("Ariana Grande")) {
             Intent i = new Intent(this, Friend_Page_Ariana.class);
             startActivity(i);
-        } else {
+        } else if (view.getTag().equals("Jonathan Van Ness")) {
             Intent i = new Intent(this, Friend_Page_JVN.class);
+            startActivity(i);
+        } else {
+            Intent i = new Intent(this, Profile_Page.class);
             startActivity(i);
         }
     }

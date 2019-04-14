@@ -87,7 +87,8 @@
                 android:textSize="10sp"
                 app:layout_constraintStart_toEndOf="@+id/button"
                 app:layout_constraintTop_toBottomOf="@+id/textView3"
-                tools:text="Friends" />
+                tools:text="Friends"
+                android:onClick="clickFriendBtn"/>
 
             <Button
                 android:id="@+id/button"

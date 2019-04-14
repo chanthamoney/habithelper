@@ -2,6 +2,11 @@ package com.example.habithelper;
 
 import android.graphics.Bitmap;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
+
 public class Globals {
 
 
@@ -76,5 +81,46 @@ public class Globals {
         bio = null;
         profileName = null;
         email = "user1523@swearjarapp.com";
+    }
+
+    public List<FriendFeedFeed> getFriendFeedList() {
+        //initializing the productlist
+        List<FriendFeedFeed> friendFeedList = new ArrayList<>();
+        //adding some items to our list
+        //adding some items to our list
+        friendFeedList.add(
+                new FriendFeedFeed(1, "Ariana Grande", "Was penalized for habit of \"Using too much spray tan\"",
+                        R.drawable.arigrande));
+        friendFeedList.add(
+                new FriendFeedFeed(2, "Ariana Grande", "Made progress on good habit of \"Writing Lyrics\"",
+                        R.drawable.arigrande));
+        friendFeedList.add(
+                new FriendFeedFeed(3, "Ariana Grande", "Made progress on good habit of \"Walking in Nature\"",
+                        R.drawable.arigrande));
+
+        friendFeedList.add(
+                new FriendFeedFeed(4, "Jonathan Van Ness", "Made progress on good habit of \"Listening to Beyoncé\"",
+                        R.drawable.jvn));
+        friendFeedList.add(
+                new FriendFeedFeed(5, "Jonathan Van Ness", "Was penalized for habit of \"Saying Queen\"",
+                        R.drawable.jvn));
+        friendFeedList.add(
+                new FriendFeedFeed(6, "Jonathan Van Ness", "Made progress on good habit of \"Wearing Sunscreen\"",
+                        R.drawable.jvn));
+        friendFeedList.add(
+                new FriendFeedFeed(7, "Jonathan Van Ness", "Made progress on good habit of \"Washing Hands\"",
+                        R.drawable.jvn));
+        friendFeedList.add(
+                new FriendFeedFeed(8, getProfileName(), "Made progress on good habit of \"Walking in Nature\"",
+                        R.drawable.profilepikture));
+        friendFeedList.add(
+                new FriendFeedFeed(9, getProfileName(), "Made progress on good habit of \"Eating Apples\"",
+                        R.drawable.profilepikture));
+        friendFeedList.add(
+                new FriendFeedFeed(10, getProfileName(), "Made progress on good habit of \"Attending Lecture\"",
+                        R.drawable.profilepikture));
+
+        Collections.shuffle(friendFeedList, new Random(626));
+        return friendFeedList;
     }
 }

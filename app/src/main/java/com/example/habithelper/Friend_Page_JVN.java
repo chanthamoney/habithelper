@@ -1,5 +1,6 @@
 package com.example.habithelper;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v7.widget.LinearLayoutManager;
@@ -34,16 +35,16 @@ public class Friend_Page_JVN extends ActivitySideMenu
         FriendPageFeedList = new ArrayList<>();
         //adding some items to our list
         FriendPageFeedList.add(
-                new FriendPageFeed(1, "Johnathan Van Ness","Made progress on good habit \"Listen to Beyonceé\"",
+                new FriendPageFeed(1, "Johnathan Van Ness","Made progress on good habit of \"Listening to Beyoncé\"",
                         R.drawable.jvn));
         FriendPageFeedList.add(
-                new FriendPageFeed(1, "Johnathan Van Ness","Was penalized for habit \"Saying Queen\"",
+                new FriendPageFeed(1, "Johnathan Van Ness","Was penalized for habit of \"Saying Queen\"",
                         R.drawable.jvn));
         FriendPageFeedList.add(
-                new FriendPageFeed(1, "Johnathan Van Ness","Made progress on good habit \"Wear Sunscreen\"",
+                new FriendPageFeed(1, "Johnathan Van Ness","Made progress on good habit of \"Wearing Sunscreen\"",
                         R.drawable.jvn));
         FriendPageFeedList.add(
-                new FriendPageFeed(1, "Johnathan Van Ness","Made progress on good habit \"Walking in Nature\"",
+                new FriendPageFeed(1, "Johnathan Van Ness","Made progress on good habit of \"Walking in Nature\"",
                         R.drawable.jvn));
 
         //creating recyclerview adapter
@@ -61,6 +62,12 @@ public class Friend_Page_JVN extends ActivitySideMenu
         } else {
             btn.setText("Add Friend");
         }
+    }
+
+    public void clickFriendBtn(android.view.View view) {
+        Intent i;
+        i = new Intent(this, Friend_Friend_Page.class);
+        startActivity(i);
     }
 
     public void openFriendProfile(android.view.View view) {

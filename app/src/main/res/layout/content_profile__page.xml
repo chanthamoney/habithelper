@@ -43,8 +43,8 @@
                 android:layout_height="80dp"
                 android:layout_alignStart="@+id/imageView"
                 android:layout_alignLeft="@+id/imageView"
-                android:layout_marginLeft="115dp"
-                android:layout_marginTop="115dp"
+                android:layout_marginLeft="70dp"
+                android:layout_marginTop="70dp"
                 android:scaleType="centerInside"
                 android:src="@android:drawable/ic_menu_edit" />
         </RelativeLayout>
@@ -117,6 +117,7 @@
                     android:gravity="center"
                     android:text="Habits"
                     android:textSize="10sp"
+                    android:onClick="habitsButton"
                     app:layout_constraintEnd_toStartOf="@+id/button3"
                     app:layout_constraintHorizontal_bias="0.859"
                     app:layout_constraintStart_toStartOf="parent"

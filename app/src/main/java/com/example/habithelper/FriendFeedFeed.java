@@ -12,7 +12,7 @@ public class FriendFeedFeed {
         this.name = name;
         this.message = message;
         this.image = image;
-        if (id >= 8) {
+        if (id >= 8 || image == R.drawable.profilepikture) {
             tag = "profilePik";
         } else {
         }

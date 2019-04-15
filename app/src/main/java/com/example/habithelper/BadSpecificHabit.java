@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class BadSpecificHabit extends AppCompatActivity {
@@ -12,6 +13,8 @@ public class BadSpecificHabit extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bad_specific_habit);
+        TextView name = findViewById(R.id.activity);
+        name.setText(getIntent().getExtras().getString("NAME"));
     }
 
 

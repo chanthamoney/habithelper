@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.Button;
 
 import java.util.ArrayList;
@@ -60,8 +61,10 @@ public class Friend_Page_Ariana extends ActivitySideMenu
 
         if ("Add Friend".equals(btn.getText())) {
             btn.setText("Unfriend");
+            findViewById(R.id.habitsbutton).setVisibility(View.VISIBLE);
         } else {
             btn.setText("Add Friend");
+            findViewById(R.id.habitsbutton).setVisibility(View.INVISIBLE);
         }
     }
 
@@ -74,5 +77,12 @@ public class Friend_Page_Ariana extends ActivitySideMenu
 
     public void openFriendProfile(android.view.View view) {
 
+    }
+
+    public void habitsButton(android.view.View view) {
+        Intent i;
+        i = new Intent(this, Habits_Page.class);
+        i.putExtra("PERSON", "Ariana Grande");
+        startActivity(i);
     }
 }

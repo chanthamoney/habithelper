@@ -41,7 +41,7 @@ public class FriendFeedAdapter extends RecyclerView.Adapter<FriendFeedAdapter.Fr
         holder.name.setText(friendFeedFeed.getName());
         holder.message.setText(friendFeedFeed.getMessage());
         holder.linearlayout.setTag(friendFeedFeed.getName());
-        if (friendFeedFeed.getId() >= 8) {
+        if (friendFeedFeed.getId() >= 8 || (friendFeedFeed.getImage() == R.drawable.profilepikture && sharedData.getProfilePicture() != null)) {
             holder.imageView.setTag(friendFeedFeed.getTag());
 
             if (sharedData.getProfilePicture() != null) {

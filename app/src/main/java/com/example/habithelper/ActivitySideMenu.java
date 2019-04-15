@@ -143,8 +143,9 @@ public class ActivitySideMenu extends AppCompatActivity
             }
 
         } else if (id == R.id.nav_habits) {
-            if (!this.getLocalClassName().equalsIgnoreCase(home.class.getSimpleName())) {
-                i = new Intent(this, home.class);
+            if (!this.getLocalClassName().equalsIgnoreCase(Habits_Page.class.getSimpleName())) {
+                i = new Intent(this, Habits_Page.class);
+                i.putExtra("PERSON", sharedData.getProfileName());
                 startActivity(i);
             }
 

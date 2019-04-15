@@ -46,17 +46,16 @@ public class Profile_Page extends ActivitySideMenu
         profileFeedList = new ArrayList<>();
         //adding some items to our list
         profileFeedList.add(
-                new ProfileFeed(1, "Made progress on good habit of \"Washing Hands\"",
-                        R.drawable.profilepikture));
-
-        profileFeedList.add(
-                new ProfileFeed(1, "Made progress on good habit of \"Eating Apples\"",
+                new ProfileFeed(1, "Made progress on good habit of \"Brushing Teeth\"",
                         R.drawable.profilepikture));
         profileFeedList.add(
-                new ProfileFeed(1, "Made progress on good habit of \"Attending Lecture\"",
+                new ProfileFeed(2, "Was penalized for habit of \"Sleeping In\"",
                         R.drawable.profilepikture));
         profileFeedList.add(
-                new ProfileFeed(1, "Made progress on good habit of \"Recycling Food Container\"",
+                new ProfileFeed(3, "Was penalized for habit of \"Sleeping In\"",
+                        R.drawable.profilepikture));
+        profileFeedList.add(
+                new ProfileFeed(4, "Was penalized for habit of \"Sleeping In\"",
                         R.drawable.profilepikture));
 
         //creating recyclerview adapter
@@ -125,6 +124,13 @@ public class Profile_Page extends ActivitySideMenu
         Intent i;
         i = new Intent(this, Friend_Feed_Page.class);
         i.putExtra("FRIEND_LIST", true);
+        startActivity(i);
+    }
+
+    public void habitsButton(android.view.View view) {
+        Intent i;
+        i = new Intent(this, Habits_Page.class);
+        i.putExtra("PERSON", sharedData.getProfileName());
         startActivity(i);
     }
 }

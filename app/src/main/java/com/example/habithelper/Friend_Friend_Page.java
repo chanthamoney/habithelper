@@ -28,9 +28,6 @@ public class Friend_Friend_Page extends ActivitySideMenu
         setContentView(R.layout.activity_friends_friends);
         super.onCreate(savedInstanceState);
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.getMenu().getItem(3).setChecked(true);
-
         //getting the recyclerview from xml
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);

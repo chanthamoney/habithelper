@@ -16,8 +16,44 @@ public class Globals {
     private String username;
     private String email;
     private String bio;
-    private Globals() {
+    private boolean jvn_Friend;
+    private boolean ari_Friend;
+    List<Habit> habitList = new ArrayList<>();
 
+    private Globals() {
+        habitList.add(
+                new Habit(0, "Kassi Soukaroune", "Brushing Teeth 3x", "Every morning", "7x", "$3", R.drawable.no_lock, R.drawable.baseline_edit_black_18dp, false));
+        habitList.add(
+                new Habit(1, "Kassi Soukaroune","Sleeping In", "Every morning", "7x", "$3", R.drawable.no_lock, R.drawable.baseline_edit_black_18dp, true));
+        habitList.add(
+                new Habit(2, "Kassi Soukaroune","Attending Lecture", "For every course", "7x", "$5", R.drawable.baseline_lock_black_18dp, R.drawable.baseline_edit_black_18dp, false));
+        habitList.add(
+                new Habit(3, "Kassi Soukaroune","Recycling Food Container", "For every snack ;)", "3x", "$2", R.drawable.no_lock, R.drawable.baseline_edit_black_18dp, false));
+    }
+
+    public void deleteHabit(int i) {
+        habitList.remove(habitList.get(i));
+
+        int j = 0;
+        for (Habit h : habitList) {
+            h.setId(j);
+            j++;
+        }
+    }
+
+    public List<Habit> getHabitList() {
+        for (Habit h : habitList) {
+            h.setOwner(getProfileName());
+        }
+        return habitList;
+    }
+
+    public int getNumHabits() {
+        return habitList.size();
+    }
+
+    public void addToHabitList(Habit habit) {
+        this.habitList.add(habit);
     }
 
     // Getter-Setters
@@ -33,7 +69,6 @@ public class Globals {
         return profilePicture;
     }
 
-
     public void setProfilePicture(Bitmap pp) {
         this.profilePicture = pp;
     }
@@ -46,7 +81,6 @@ public class Globals {
         this.profileName = pn;
     }
 
-
     public String getUsername() {
         return username != null ? username : "@KassiSouk";
     }
@@ -54,7 +88,6 @@ public class Globals {
     public void setUsername(String un) {
         this.username = "@" + un;
     }
-
 
     public String getBio() {
         return bio != null ? bio : "I didn't say yee";
@@ -64,7 +97,6 @@ public class Globals {
         this.bio = b;
     }
 
-
     public String getEmail() {
         return email != null ? email : "Kassi Soukaroune";
     }
@@ -73,12 +105,21 @@ public class Globals {
         this.email = e;
     }
 
+    public void setJvnFriend(Boolean b) {
+        this.jvn_Friend = b;
+    }
+    public boolean getJvnFriend() {
+        return this.jvn_Friend;
+    }
+    public void setAriFriend(Boolean b) {
+        this.ari_Friend = b;
+    }
+    public boolean getAriFriend() {
+        return this.ari_Friend;
+    }
+
     public void clear() {
-        profilePicture = null;
-        username = null;
-        bio = null;
-        profileName = null;
-        email = "user1523@swearjarapp.com";
+        instance = new Globals();
     }
 
     public List<FriendFeedFeed> getFriendFeedList() {
@@ -86,28 +127,33 @@ public class Globals {
         List<FriendFeedFeed> friendFeedList = new ArrayList<>();
         //adding some items to our list
         //adding some items to our list
-        friendFeedList.add(
-                new FriendFeedFeed(1, "Ariana Grande", "Was penalized for habit of \"Using too much spray tan\"",
-                        R.drawable.arigrande));
-        friendFeedList.add(
-                new FriendFeedFeed(2, "Ariana Grande", "Made progress on good habit of \"Writing Lyrics\"",
-                        R.drawable.arigrande));
-        friendFeedList.add(
-                new FriendFeedFeed(3, "Ariana Grande", "Made progress on good habit of \"Walking in Nature\"",
-                        R.drawable.arigrande));
+        if (ari_Friend) {
+            friendFeedList.add(
+                    new FriendFeedFeed(1, "Ariana Grande", "Was penalized for habit of \"Using too much spray tan\"",
+                            R.drawable.arigrande));
+            friendFeedList.add(
+                    new FriendFeedFeed(2, "Ariana Grande", "Made progress on good habit of \"Writing Lyrics\"",
+                            R.drawable.arigrande));
+            friendFeedList.add(
+                    new FriendFeedFeed(3, "Ariana Grande", "Made progress on good habit of \"Walking in Nature\"",
+                            R.drawable.arigrande));
+        }
 
-        friendFeedList.add(
-                new FriendFeedFeed(4, "Jonathan Van Ness", "Made progress on good habit of \"Listening to Beyoncé\"",
-                        R.drawable.jvn));
-        friendFeedList.add(
-                new FriendFeedFeed(5, "Jonathan Van Ness", "Was penalized for habit of \"Saying Queen\"",
-                        R.drawable.jvn));
-        friendFeedList.add(
-                new FriendFeedFeed(6, "Jonathan Van Ness", "Made progress on good habit of \"Wearing Sunscreen\"",
-                        R.drawable.jvn));
-        friendFeedList.add(
-                new FriendFeedFeed(7, "Jonathan Van Ness", "Made progress on good habit of \"Washing Hands\"",
-                        R.drawable.jvn));
+        if(jvn_Friend) {
+            friendFeedList.add(
+                    new FriendFeedFeed(4, "Jonathan Van Ness", "Made progress on good habit of \"Listening to Beyoncé\"",
+                            R.drawable.jvn));
+            friendFeedList.add(
+                    new FriendFeedFeed(5, "Jonathan Van Ness", "Was penalized for habit of \"Saying Queen\"",
+                            R.drawable.jvn));
+            friendFeedList.add(
+                    new FriendFeedFeed(6, "Jonathan Van Ness", "Made progress on good habit of \"Wearing Sunscreen\"",
+                            R.drawable.jvn));
+            friendFeedList.add(
+                    new FriendFeedFeed(7, "Jonathan Van Ness", "Made progress on good habit of \"Washing Hands\"",
+                            R.drawable.jvn));
+        }
+
         friendFeedList.add(
                 new FriendFeedFeed(8, getProfileName(), "Made progress on good habit of \"Walking in Nature\"",
                         R.drawable.profilepikture));

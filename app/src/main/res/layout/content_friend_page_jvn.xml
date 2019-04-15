@@ -68,7 +68,7 @@
             </RelativeLayout>
 
             <Button
-                android:id="@+id/addfriendbtn4"
+                android:id="@+id/addfriendbtn"
                 android:layout_width="140dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -160,7 +160,7 @@
                     android:onClick="habitsButton"/>
 
                 <Button
-                    android:id="@+id/button3"
+                    android:id="@+id/friendsbutton"
                     android:layout_width="wrap_content"
                     android:layout_height="31dp"
                     android:layout_marginTop="8dp"

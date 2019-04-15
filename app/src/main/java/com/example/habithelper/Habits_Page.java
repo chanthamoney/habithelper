@@ -2,6 +2,7 @@ package com.example.habithelper;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -11,8 +12,10 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -29,6 +32,8 @@ public class Habits_Page extends ActivitySideMenu
     String person;
 
     AlertDialog myalert;
+
+    int currentlyEditing;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,15 +80,7 @@ public class Habits_Page extends ActivitySideMenu
 
             findViewById(R.id.fab).setVisibility(View.INVISIBLE);
         } else {
-            habitList.add(
-                    new Habit(1, sharedData.getProfileName(), "Brushing Teeth 3x", "Every morning", "7x", "$3", R.drawable.no_lock, R.drawable.baseline_edit_black_18dp, false));
-            habitList.add(
-                    new Habit(2, sharedData.getProfileName(),"Sleeping In", "Every morning", "7x", "$3", R.drawable.no_lock, R.drawable.baseline_edit_black_18dp, true));
-            habitList.add(
-                    new Habit(3, sharedData.getProfileName(),"Attending Lecture", "For every course", "7x", "$5", R.drawable.baseline_lock_black_18dp, R.drawable.baseline_edit_black_18dp, false));
-            habitList.add(
-                    new Habit(4, sharedData.getProfileName(),"Recycling Food Container", "For every snack ;)", "3x", "$2", R.drawable.no_lock, R.drawable.baseline_edit_black_18dp, false));
-
+            habitList = sharedData.getHabitList();
         }
 
         //creating recyclerview adapter
@@ -96,6 +93,7 @@ public class Habits_Page extends ActivitySideMenu
         myFab.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 myalert = new AlertDialog.Builder(Habits_Page.this).setView(R.layout.layout_popup_habit).create();
+                currentlyEditing = -1;
                 myalert.show();
             }
         });
@@ -120,8 +118,8 @@ public class Habits_Page extends ActivitySideMenu
     }
 
     private void editHabit(android.view.View view) {
-        myalert = new AlertDialog.Builder(Habits_Page.this).setView(R.layout.layout_popup_habit).create();
-        myalert.show();
+        myalert = new AlertDialog.Builder(Habits_Page.this).setView(R.layout.layout_popup_habit).show();
+        currentlyEditing = Integer.parseInt(view.getTag().toString());
     }
 
     private void reportHabit(android.view.View view) {
@@ -129,7 +127,7 @@ public class Habits_Page extends ActivitySideMenu
         AlertDialog.Builder builder = new AlertDialog.Builder(Habits_Page.this);
         builder.setTitle("Report Habit");
         builder.setIcon(R.drawable.jar);
-        builder.setMessage("Are you sure you want to report that " + person + " did their habit of \"" + view.getTag() + "\"?");
+        builder.setMessage("Are you sure you want to report that " + person + " did their habit of \"" + sharedData.getHabitList().get(Integer.parseInt(view.getTag().toString())).getName() + "\"?");
         builder.setPositiveButton("Yes",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
@@ -153,10 +151,12 @@ public class Habits_Page extends ActivitySideMenu
             if (goodorbad.equals("Bad")) {
                 i = new Intent(this, BadSpecificHabit.class);
                 i.putExtra("NAME", view.getTag(R.id.habit_name).toString());
+                i.putExtra("ID", view.getTag(R.id.mybreak).toString());
                 startActivity(i);
             } else {
                 i = new Intent(this, GoodSpecificHabit.class);
                 i.putExtra("NAME",  view.getTag(R.id.habit_name).toString());
+                i.putExtra("ID", view.getTag(R.id.mybreak).toString());
                 startActivity(i);
             }
         } else {
@@ -164,10 +164,12 @@ public class Habits_Page extends ActivitySideMenu
             if (name.getTag().equals("Bad")) {
                 i = new Intent(this, BadSpecificHabit.class);
                 i.putExtra("NAME", ((TextView) view.findViewById(R.id.habit_name)).getText());
+                i.putExtra("ID", ((TextView) view.findViewById(R.id.habit_description)).getTag().toString());
                 startActivity(i);
             } else {
                 i = new Intent(this, GoodSpecificHabit.class);
                 i.putExtra("NAME", ((TextView) view.findViewById(R.id.habit_name)).getText());
+                i.putExtra("ID", ((TextView) view.findViewById(R.id.habit_description)).getTag().toString());
                 startActivity(i);
             }
         }
@@ -178,6 +180,54 @@ public class Habits_Page extends ActivitySideMenu
     }
 
     public void onMySubmit(View view) {
+        if (currentlyEditing >= 0) {
+            Habit habit = sharedData.getHabitList().get(currentlyEditing);
+            String name = ((EditText) view.getRootView().findViewById(R.id.mynameinput)).getText().toString();
+            String notes = ((EditText) view.getRootView().findViewById(R.id.mynotesinput)).getText().toString();
+            String frequency = ((EditText) view.getRootView().findViewById(R.id.myfrequencyinput)).getText().toString();
+            String cost = ((EditText) view.getRootView().findViewById(R.id.mycostinput)).getText().toString();
+            Boolean isbad = ((Switch) view.getRootView().findViewById(R.id.mybreak)).isChecked();
+            Boolean isprivate = ((Switch) view.getRootView().findViewById(R.id.myprivate)).isChecked();
+            if (name != null && !name.equals("")) {
+                habit.setName(name);
+            }
+            if (notes != null && !notes.equals("")) {
+                habit.setDescription(notes);
+            }
+            if (frequency != null && !frequency.equals("")) {
+                habit.setFrequency(frequency);
+            }
+            if (cost != null && !cost.equals("")) {
+                habit.setCost(cost);
+            }
+            habit.setIs_bad(isbad);
+            if (isprivate) {
+                habit.setLock_image(R.drawable.baseline_lock_black_18dp);
+            } else {
+                habit.setLock_image(R.drawable.no_lock);
+            }
+        } else {
+            String name = ((EditText) view.getRootView().findViewById(R.id.mynameinput)).getText().toString();
+            String notes = ((EditText) view.getRootView().findViewById(R.id.mynotesinput)).getText().toString();
+            String frequency = ((EditText) view.getRootView().findViewById(R.id.myfrequencyinput)).getText().toString() + "x";
+            String cost = "$" + ((EditText) view.getRootView().findViewById(R.id.mycostinput)).getText().toString();
+            Boolean isbad = ((Switch) view.getRootView().findViewById(R.id.mybreak)).isChecked();
+            Boolean isprivate = ((Switch) view.getRootView().findViewById(R.id.myprivate)).isChecked();
+            int d;
+            if (isprivate) {
+                d = R.drawable.baseline_lock_black_18dp;
+            } else {
+                d = R.drawable.no_lock;
+            }
+            Habit habit = new Habit(sharedData.getNumHabits(),  sharedData.getProfileName(),  name, notes, frequency, cost, d, R.drawable.baseline_edit_black_18dp, isbad);
+            sharedData.addToHabitList(habit);
+        }
+        habitList = sharedData.getHabitList();
+        //creating recyclerview adapter
+        HabitPageHabitAdapter adapter = new HabitPageHabitAdapter(this, habitList);
+
+        //setting adapter to recyclerview
+        recyclerView.setAdapter(adapter);
         myalert.cancel();
     }
 }

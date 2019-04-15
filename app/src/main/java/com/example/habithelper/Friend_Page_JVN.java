@@ -53,17 +53,31 @@ public class Friend_Page_JVN extends ActivitySideMenu
 
         //setting adapter to recyclerview
         recyclerView.setAdapter(adapter);
+
+        if (!sharedData.getJvnFriend()) {
+            Button btn = (Button) findViewById(R.id.addfriendbtn);
+            btn.setText("Add Friend");
+            findViewById(R.id.habitsbutton).setVisibility(View.INVISIBLE);
+            findViewById(R.id.friendsbutton).setVisibility(View.INVISIBLE);
+            findViewById(R.id.recyclerView).setVisibility(View.INVISIBLE);
+        }
     }
 
     public void toggleFriend(android.view.View view) {
-        Button btn = (Button) findViewById(R.id.addfriendbtn4);
+        Button btn = (Button) findViewById(R.id.addfriendbtn);
 
         if ("Add Friend".equals(btn.getText())) {
             btn.setText("Unfriend");
             findViewById(R.id.habitsbutton).setVisibility(View.VISIBLE);
+            findViewById(R.id.recyclerView).setVisibility(View.VISIBLE);
+            findViewById(R.id.friendsbutton).setVisibility(View.VISIBLE);
+            sharedData.setJvnFriend(true);
         } else {
             btn.setText("Add Friend");
             findViewById(R.id.habitsbutton).setVisibility(View.INVISIBLE);
+            findViewById(R.id.friendsbutton).setVisibility(View.INVISIBLE);
+            findViewById(R.id.recyclerView).setVisibility(View.INVISIBLE);
+            sharedData.setJvnFriend(false);
         }
     }
 

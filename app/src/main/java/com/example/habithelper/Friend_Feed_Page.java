@@ -45,12 +45,16 @@ public class Friend_Feed_Page extends ActivitySideMenu
                     //initializing the productlist
                     friendList = new ArrayList<>();
                     //adding some items to our list
-                    friendList.add(
-                            new FriendFeedFeed(1, "Ariana Grande", "@arigrande",
-                                    R.drawable.arigrande));
-                    friendList.add(
-                            new FriendFeedFeed(2, "Jonathan Van Ness", "@jvn",
-                                    R.drawable.jvn));
+                    if (sharedData.getAriFriend()) {
+                        friendList.add(
+                                new FriendFeedFeed(1, "Ariana Grande", "@arigrande",
+                                        R.drawable.arigrande));
+                    }
+                    if (sharedData.getJvnFriend()) {
+                        friendList.add(
+                                new FriendFeedFeed(2, "Jonathan Van Ness", "@jvn",
+                                        R.drawable.jvn));
+                    }
 
                     //creating recyclerview adapter
                     FriendFeedAdapter adapter = new FriendFeedAdapter(getBaseContext(), friendList);

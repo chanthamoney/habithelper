@@ -67,16 +67,17 @@ public class HabitPageHabitAdapter extends RecyclerView.Adapter<HabitPageHabitAd
         if(Habit.getIsBad()) {
             holder.name.setTag("Bad");
             holder.see_pic.setTag(R.id.habit_description, "Bad");
-            holder.see_pic.setTag(R.id.habit_name, Habit.getName());
-            holder.actionImageView.setTag(Habit.getName());
             holder.name.setTextColor(Color.argb(255, 255, 0, 0));
         } else {
             holder.name.setTag("Good");
             holder.see_pic.setTag(R.id.habit_description, "Good");
-            holder.see_pic.setTag(R.id.habit_name, Habit.getName());
-            holder.actionImageView.setTag(Habit.getName());
             holder.name.setTextColor(Color.argb(255, 0, 180, 0));
         }
+        holder.see_pic.setTag(R.id.habit_name, Habit.getName());
+        holder.see_pic.setTag(R.id.mybreak, Habit.getId());
+        holder.description.setTag(Integer.toString(Habit.getId()));
+        holder.actionImageView.setTag(Integer.toString(Habit.getId()));
+
     }
 
     @Override

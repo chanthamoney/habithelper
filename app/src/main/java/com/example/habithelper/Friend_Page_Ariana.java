@@ -38,7 +38,6 @@ public class Friend_Page_Ariana extends ActivitySideMenu
         FriendPageFeedList.add(
                 new FriendPageFeed(1, "Ariana Grande", "Made progress on good habit of \"Streaming Album\"",
                         R.drawable.arigrande));
-
         FriendPageFeedList.add(
                 new FriendPageFeed(2, "Ariana Grande", "Was penalized for habit of \"Using too much spray tan\"",
                         R.drawable.arigrande));
@@ -54,6 +53,14 @@ public class Friend_Page_Ariana extends ActivitySideMenu
 
         //setting adapter to recyclerview
         recyclerView.setAdapter(adapter);
+
+        if (!sharedData.getAriFriend()) {
+            Button btn = (Button) findViewById(R.id.addfriendbtn);
+            btn.setText("Add Friend");
+            findViewById(R.id.habitsbutton).setVisibility(View.INVISIBLE);
+            findViewById(R.id.friendsbutton).setVisibility(View.INVISIBLE);
+            findViewById(R.id.recyclerView).setVisibility(View.INVISIBLE);
+        }
     }
 
     public void toggleFriend(android.view.View view) {
@@ -62,9 +69,15 @@ public class Friend_Page_Ariana extends ActivitySideMenu
         if ("Add Friend".equals(btn.getText())) {
             btn.setText("Unfriend");
             findViewById(R.id.habitsbutton).setVisibility(View.VISIBLE);
+            findViewById(R.id.recyclerView).setVisibility(View.VISIBLE);
+            findViewById(R.id.friendsbutton).setVisibility(View.VISIBLE);
+            sharedData.setAriFriend(true);
         } else {
             btn.setText("Add Friend");
             findViewById(R.id.habitsbutton).setVisibility(View.INVISIBLE);
+            findViewById(R.id.friendsbutton).setVisibility(View.INVISIBLE);
+            findViewById(R.id.recyclerView).setVisibility(View.INVISIBLE);
+            sharedData.setAriFriend(false);
         }
     }
 

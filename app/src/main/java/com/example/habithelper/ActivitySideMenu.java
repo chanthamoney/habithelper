@@ -147,6 +147,18 @@ public class ActivitySideMenu extends AppCompatActivity
                 i = new Intent(this, Habits_Page.class);
                 i.putExtra("PERSON", sharedData.getProfileName());
                 startActivity(i);
+            } else {
+                if (getIntent().getExtras().getString("PERSON") != null) {
+                    if(!getIntent().getExtras().getString("PERSON").toString().equals(sharedData.getProfileName())) {
+                        i = new Intent(this, Habits_Page.class);
+                        i.putExtra("PERSON", sharedData.getProfileName());
+                        startActivity(i);
+                    }
+                } else {
+                    i = new Intent(this, Habits_Page.class);
+                    i.putExtra("PERSON", sharedData.getProfileName());
+                    startActivity(i);
+                }
             }
 
         } else if (id == R.id.nav_search) {

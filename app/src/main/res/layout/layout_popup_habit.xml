@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/myname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Habit Name"
+            tools:text="Habit Name" />
+
+        <EditText
+            android:id="@+id/mynameinput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="name"
+            android:inputType="text" />
+
+        <Switch
+            android:id="@+id/switch1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Break Habit" />
+
+        <TextView
+            android:id="@+id/mycost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Habit Cost"
+            tools:text="Habit Cost" />
+
+        <EditText
+            android:id="@+id/mycostinput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="$__"
+            android:inputType="text" />
+
+        <TextView
+            android:id="@+id/myfrequency"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Frequency"
+            tools:text="Frequency" />
+
+        <EditText
+            android:id="@+id/myfrequencyinput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="#"
+            android:inputType="text" />
+
+        <TextView
+            android:id="@+id/mynotes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Notes"
+            tools:text="Notes" />
+
+        <EditText
+            android:id="@+id/mynotesinput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text" />
+
+        <Switch
+            android:id="@+id/myprivate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Private" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/mycancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onMyCancel"
+                android:text="Cancel" />
+
+            <Button
+                android:id="@+id/mysubmit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onMySubmit"
+                android:text="Submit" />
+        </LinearLayout>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

@@ -9,9 +9,9 @@ public class Habit {
     private int lock_image;
     private int action_image;
     private boolean is_bad;
+    private String owner;
 
-
-    public Habit(int id, String name, String description, String frequency, String cost, int lock_image, int action_image, boolean is_bad) {
+    public Habit(int id, String owner, String name, String description, String frequency, String cost, int lock_image, int action_image, boolean is_bad) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -20,6 +20,7 @@ public class Habit {
         this.lock_image = lock_image;
         this.action_image = action_image;
         this.is_bad = is_bad;
+        this.owner = owner;
     }
 
     public int getId() {
@@ -52,5 +53,9 @@ public class Habit {
 
     public boolean getIsBad() {
         return is_bad;
+    }
+
+    public String getOwner() {
+        return owner;
     }
 }

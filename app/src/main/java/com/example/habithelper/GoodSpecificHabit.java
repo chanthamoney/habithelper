@@ -25,7 +25,7 @@ public class GoodSpecificHabit extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(GoodSpecificHabit.this);
         builder.setTitle("Are you sure?");
         builder.setItems(new CharSequence[]
-                        {"Congratulations! You have met the quota for this habit frequency to unlock $1 from your jar.", "Cancel", "Ok."},
+                        {"Congratulations! You have met the quota for this habit frequency to unlock $1 from your jar.", "Cancel", "Yes, continue."},
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         // The 'which' argument contains the index position

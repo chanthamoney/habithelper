@@ -25,7 +25,7 @@ public class BadSpecificHabit extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(BadSpecificHabit.this);
         builder.setTitle("Are you sure?");
         builder.setItems(new CharSequence[]
-                        {"You have met your quota for this bad habit and $1 will be locked in your jar.", "Cancel", "Ok."},
+                        {"You have met your quota for this bad habit and $1 will be locked in your jar.", "Cancel", "Yes, continue."},
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         // The 'which' argument contains the index position

@@ -21,6 +21,8 @@ public class Globals {
     List<Habit> habitList = new ArrayList<>();
 
     private Globals() {
+        jvn_Friend = true;
+        ari_Friend = true;
         habitList.add(
                 new Habit(0, "Kassi Soukaroune", "Brushing Teeth 3x", "Every morning", "7x", "$3", R.drawable.no_lock, R.drawable.baseline_edit_black_18dp, false));
         habitList.add(
@@ -98,7 +100,7 @@ public class Globals {
     }
 
     public String getEmail() {
-        return email != null ? email : "Kassi Soukaroune";
+        return email != null ? email : "user123@habithelper.com";
     }
 
     public void setEmail(String e) {

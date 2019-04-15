@@ -194,7 +194,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                     }
                 });
 
-        builder.setNegativeButton("Yas, delete my account.",
+        builder.setNegativeButton("Yes, delete my account.",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         logout = true;

@@ -78,7 +78,9 @@ public class CreateNewUserActivity extends AppCompatActivity {
                     sharedData.setUsername(((EditText) findViewById(R.id.usernameInput)).getText().toString());
                     sharedData.setBio(((EditText) findViewById(R.id.bioInput)).getText().toString());
                     Intent i = new Intent(CreateNewUserActivity.this, home.class);
+                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(i);
+                    finish();
                 }
             }
         });

@@ -12,6 +12,8 @@ public class LoggingOut extends AppCompatActivity {
         setContentView(R.layout.activity_logging_out);
 
         Intent mStartActivity = new Intent(LoggingOut.this, LoginActivity.class);
+        mStartActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(mStartActivity);
+        finish();
     }
 }

@@ -383,7 +383,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(false);
             //         TODO: CHANGE TO VIEW YOU WANT TO SEE AFTER "SIGNING IN"
             Intent i = new Intent(LoginActivity.this, home.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(i);
+            finish();
 
 
 //            if (success) {

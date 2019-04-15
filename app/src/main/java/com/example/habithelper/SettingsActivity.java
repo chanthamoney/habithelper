@@ -202,7 +202,9 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                     public void onClick(DialogInterface dialog, int id) {
                         logout = true;
                         Intent i = new Intent(getBaseContext(), LoggingOut.class);
+                        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(i);
+                        finish();
                     }
                 });
         builder.show();
@@ -211,7 +213,9 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
     public void logOut(android.view.View view) {
         logout = true;
         Intent i = new Intent(getBaseContext(), LoggingOut.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(i);
+        finish();
     }
 
     @Override

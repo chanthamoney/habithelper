@@ -67,6 +67,7 @@ public class GoodSpecificHabit extends AppCompatActivity {
                         Intent i = new Intent(getApplicationContext(), Habits_Page.class);
                         i.putExtra("PERSON", sharedData.getProfileName());
                         startActivity(i);
+                        finish();
                         Toast.makeText(GoodSpecificHabit.this, "Deleted Habit \"" + habitName + "\"", Toast.LENGTH_SHORT).show();
                     }
                 });

@@ -133,6 +133,19 @@ public class Globals {
         bio = null;
         profileName = null;
         email = "user1523@swearjarapp.com";
+
+        jvn_Friend = true;
+        ari_Friend = true;
+
+        habitList = new ArrayList<>();
+        habitList.add(
+                new Habit(0, "Kassi Soukaroune", "Brushing Teeth 3x", "Every morning", "7x", "$3", R.drawable.no_lock, R.drawable.baseline_edit_black_18dp, false));
+        habitList.add(
+                new Habit(1, "Kassi Soukaroune","Sleeping In", "Every morning", "7x", "$3", R.drawable.no_lock, R.drawable.baseline_edit_black_18dp, true));
+        habitList.add(
+                new Habit(2, "Kassi Soukaroune","Attending Lecture", "For every course", "7x", "$5", R.drawable.baseline_lock_black_18dp, R.drawable.baseline_edit_black_18dp, false));
+        habitList.add(
+                new Habit(3, "Kassi Soukaroune","Recycling Food Container", "For every snack ;)", "3x", "$2", R.drawable.no_lock, R.drawable.baseline_edit_black_18dp, false));
     }
 
     public List<FriendFeedFeed> getFriendFeedList() {

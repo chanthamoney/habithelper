@@ -123,8 +123,8 @@ public class Habits_Page extends ActivitySideMenu
         ((Switch) myalert.findViewById(R.id.mybreak)).setChecked(view.getTag(R.id.secret5).equals("TRUE"));
         ((EditText) myalert.findViewById(R.id.mynameinput)).setText(view.getTag(R.id.secret6).toString());
         ((EditText) myalert.findViewById(R.id.mynotesinput)).setText(view.getTag(R.id.secret7).toString());
-        ((EditText) myalert.findViewById(R.id.myfrequencyinput)).setText(view.getTag(R.id.secret8).toString());
-        ((EditText) myalert.findViewById(R.id.mycostinput)).setText(view.getTag(R.id.secret9).toString());
+        ((EditText) myalert.findViewById(R.id.myfrequencyinput)).setText(view.getTag(R.id.secret8).toString().substring(0, view.getTag(R.id.secret8).toString().length() - 1));
+        ((EditText) myalert.findViewById(R.id.mycostinput)).setText(view.getTag(R.id.secret9).toString().substring(1));
 
         currentlyEditing = Integer.parseInt(view.getTag(R.id.secret2).toString());
     }
@@ -204,10 +204,10 @@ public class Habits_Page extends ActivitySideMenu
                 habit.setDescription(notes);
             }
             if (frequency != null && !frequency.equals("")) {
-                habit.setFrequency(frequency);
+                habit.setFrequency(frequency + "x");
             }
             if (cost != null && !cost.equals("")) {
-                habit.setCost(cost);
+                habit.setCost("$" + cost);
             }
             habit.setIs_bad(isbad);
             if (isprivate) {

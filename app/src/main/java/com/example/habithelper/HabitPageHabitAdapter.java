@@ -76,7 +76,8 @@ public class HabitPageHabitAdapter extends RecyclerView.Adapter<HabitPageHabitAd
         holder.see_pic.setTag(R.id.habit_name, Habit.getName());
         holder.see_pic.setTag(R.id.mybreak, Habit.getId());
         holder.description.setTag(Integer.toString(Habit.getId()));
-        holder.actionImageView.setTag(Integer.toString(Habit.getId()));
+        holder.actionImageView.setTag(R.id.secret2, Integer.toString(Habit.getId()));
+        holder.actionImageView.setTag(R.id.secret3, Habit.getName());
 
     }
 

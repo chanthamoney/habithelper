@@ -119,7 +119,7 @@ public class Habits_Page extends ActivitySideMenu
 
     private void editHabit(android.view.View view) {
         myalert = new AlertDialog.Builder(Habits_Page.this).setView(R.layout.layout_popup_habit).show();
-        currentlyEditing = Integer.parseInt(view.getTag().toString());
+        currentlyEditing = Integer.parseInt(view.getTag(R.id.secret2).toString());
     }
 
     private void reportHabit(android.view.View view) {
@@ -127,7 +127,7 @@ public class Habits_Page extends ActivitySideMenu
         AlertDialog.Builder builder = new AlertDialog.Builder(Habits_Page.this);
         builder.setTitle("Report Habit");
         builder.setIcon(R.drawable.jar);
-        builder.setMessage("Are you sure you want to report that " + person + " did their habit of \"" + sharedData.getHabitList().get(Integer.parseInt(view.getTag().toString())).getName() + "\"?");
+        builder.setMessage("Are you sure you want to report that " + person + " did their habit of \"" + view.getTag(R.id.secret3) + "\"?");
         builder.setPositiveButton("Yes",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {

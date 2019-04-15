@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +35,8 @@ public class Habits_Page extends ActivitySideMenu
     AlertDialog myalert;
 
     int currentlyEditing;
+
+    String reportedHabit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -134,11 +137,14 @@ public class Habits_Page extends ActivitySideMenu
         AlertDialog.Builder builder = new AlertDialog.Builder(Habits_Page.this);
         builder.setTitle("Report Habit");
         builder.setIcon(R.drawable.jar);
-        builder.setMessage("Are you sure you want to report that " + person + " did their habit of \"" + view.getTag(R.id.secret3) + "\"?");
-        builder.setPositiveButton("Yes",
+        reportedHabit = view.getTag(R.id.secret3).toString();
+        builder.setMessage("Are you sure you want to report that " + person + " did their habit of \"" + reportedHabit + "\"?");
+        builder.setPositiveButton("Yes, report.",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
+                        Toast.makeText(Habits_Page.this, "Reoported on habit \"" + reportedHabit + "\"", Toast.LENGTH_SHORT).show();
+
                     }
                 });
 
@@ -146,6 +152,7 @@ public class Habits_Page extends ActivitySideMenu
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
+                        Toast.makeText(Habits_Page.this, "Cancelled", Toast.LENGTH_SHORT).show();
                     }
                 });
         builder.show();

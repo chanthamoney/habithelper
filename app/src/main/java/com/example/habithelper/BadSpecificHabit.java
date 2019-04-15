@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -12,34 +13,37 @@ public class BadSpecificHabit extends AppCompatActivity {
 
     Globals sharedData = Globals.getInstance();
 
+    String habitName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bad_specific_habit);
         TextView name = findViewById(R.id.activity);
-        name.setText(getIntent().getExtras().getString("NAME"));
+        habitName = getIntent().getExtras().getString("NAME");
+        name.setText(habitName);
+
     }
 
 
     public void badDialog(android.view.View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(BadSpecificHabit.this);
         builder.setTitle("Are you sure?");
-        builder.setItems(new CharSequence[]
-                        {"You have met your quota for this bad habit and $1 will be locked in your jar.", "Cancel", "Yes, continue."},
+        builder.setIcon(R.drawable.jar);
+        builder.setMessage("Oh no! You have met your frequency quota for the bad habit \"" + habitName + "\" and $1 will be locked in your jar.");
+        builder.setPositiveButton("Yes, continue.",
                 new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        // The 'which' argument contains the index position
-                        // of the selected item
-                        switch (which) {
-                            case 0:
-                                break;
-                            case 1:
-                                Toast.makeText(BadSpecificHabit.this, "Cancelled.", Toast.LENGTH_SHORT).show();
-                                break;
-                            case 2:
-                                Toast.makeText(BadSpecificHabit.this, "Bad Habit Recorded!", Toast.LENGTH_SHORT).show();
-                                break;
-                        }
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                        Toast.makeText(BadSpecificHabit.this, "Progress Recorded!", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+        builder.setNegativeButton("Cancel",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                        Toast.makeText(BadSpecificHabit.this, "Cancelled.", Toast.LENGTH_SHORT).show();
                     }
                 });
         builder.show();
@@ -49,11 +53,12 @@ public class BadSpecificHabit extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(BadSpecificHabit.this);
         builder.setTitle("Are you sure?");
         builder.setIcon(R.drawable.jar);
-        builder.setMessage("This will permanently delete this habit. However, records of this habit may remain (e.g. transaction history, user feed).");
+        builder.setMessage("This will permanently delete the habit \"" + habitName + "\". However, records of this habit may remain (e.g. transaction history, user feed).");
         builder.setPositiveButton("Cancel",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
+                        Toast.makeText(BadSpecificHabit.this, "Cancelled", Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -64,6 +69,7 @@ public class BadSpecificHabit extends AppCompatActivity {
                         Intent i = new Intent(getApplicationContext(), Habits_Page.class);
                         i.putExtra("PERSON", sharedData.getProfileName());
                         startActivity(i);
+                        Toast.makeText(BadSpecificHabit.this, "Deleted Habit \"" + habitName + "\"", Toast.LENGTH_SHORT).show();
                     }
                 });
         builder.show();

@@ -11,6 +11,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -110,6 +111,7 @@ public class home extends ActivitySideMenu
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
                                         dialog.cancel();
+                                        Toast.makeText(home.this, "Cancelled", Toast.LENGTH_SHORT).show();
                                     }
                                 });
 
@@ -117,6 +119,7 @@ public class home extends ActivitySideMenu
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
                                         dialog.cancel();
+                                        Toast.makeText(home.this, "Jar Cashed Out", Toast.LENGTH_SHORT).show();
                                     }
                                 });
                         builder.show();

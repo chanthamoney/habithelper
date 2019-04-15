@@ -63,6 +63,22 @@ public class Globals {
         return instance;
     }
 
+    public void setAriFriend(boolean ari_Friend) {
+        this.ari_Friend = ari_Friend;
+    }
+
+    public boolean getAriFriend() {
+        return this.ari_Friend;
+    }
+
+    public void setJvnFriend(boolean jvn_Friend) {
+        this.jvn_Friend = jvn_Friend;
+    }
+
+    public boolean getJvnFriend() {
+        return this.jvn_Friend;
+    }
+
     public static void setInstance(Globals instance) {
         Globals.instance = instance;
     }
@@ -70,6 +86,7 @@ public class Globals {
     public Bitmap getProfilePicture() {
         return profilePicture;
     }
+
 
     public void setProfilePicture(Bitmap pp) {
         this.profilePicture = pp;
@@ -83,6 +100,7 @@ public class Globals {
         this.profileName = pn;
     }
 
+
     public String getUsername() {
         return username != null ? username : "@KassiSouk";
     }
@@ -90,6 +108,7 @@ public class Globals {
     public void setUsername(String un) {
         this.username = "@" + un;
     }
+
 
     public String getBio() {
         return bio != null ? bio : "I didn't say yee";
@@ -99,29 +118,21 @@ public class Globals {
         this.bio = b;
     }
 
+
     public String getEmail() {
-        return email != null ? email : "user123@habithelper.com";
+        return email != null ? email : "Kassi Soukaroune";
     }
 
     public void setEmail(String e) {
         this.email = e;
     }
 
-    public void setJvnFriend(Boolean b) {
-        this.jvn_Friend = b;
-    }
-    public boolean getJvnFriend() {
-        return this.jvn_Friend;
-    }
-    public void setAriFriend(Boolean b) {
-        this.ari_Friend = b;
-    }
-    public boolean getAriFriend() {
-        return this.ari_Friend;
-    }
-
     public void clear() {
-        instance = new Globals();
+        profilePicture = null;
+        username = null;
+        bio = null;
+        profileName = null;
+        email = "user1523@swearjarapp.com";
     }
 
     public List<FriendFeedFeed> getFriendFeedList() {

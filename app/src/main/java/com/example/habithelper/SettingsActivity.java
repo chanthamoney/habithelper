@@ -21,6 +21,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -191,6 +192,8 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
+                        Toast.makeText(SettingsActivity.this, "Cancelled", Toast.LENGTH_SHORT).show();
+
                     }
                 });
 
@@ -230,6 +233,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             dialog.cancel();
+                            Toast.makeText(SettingsActivity.this, "Cancelled", Toast.LENGTH_SHORT).show();
                         }
                     });
 
@@ -237,6 +241,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             dialog.cancel();
+                            Toast.makeText(SettingsActivity.this, "Jar Cashed Out", Toast.LENGTH_SHORT).show();
                         }
                     });
             builder.show();

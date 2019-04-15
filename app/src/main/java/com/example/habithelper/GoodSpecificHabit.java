@@ -12,32 +12,36 @@ public class GoodSpecificHabit extends AppCompatActivity {
 
     Globals sharedData = Globals.getInstance();
 
+    String habitName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_good_specific_habit);
         TextView name = findViewById(R.id.activity);
-        name.setText(getIntent().getExtras().getString("NAME"));
+        habitName = getIntent().getExtras().getString("NAME");
+        name.setText(habitName);
     }
 
 
     public void goodDialog(android.view.View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(GoodSpecificHabit.this);
         builder.setTitle("Are you sure?");
-        builder.setItems(new CharSequence[]
-                        {"Congratulations! You have met the quota for this habit frequency to unlock $1 from your jar.", "Cancel", "Yes, continue."},
+        builder.setIcon(R.drawable.jar);
+        builder.setMessage("Congratulations! You have met the frequency quota for the good habit \""+ habitName + "\" to unlock $1 from your jar.");
+        builder.setPositiveButton("Yes, continue.",
                 new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        // The 'which' argument contains the index position
-                        // of the selected item
-                        switch (which) {
-                            case 1:
-                                Toast.makeText(GoodSpecificHabit.this, "Cancelled.", Toast.LENGTH_SHORT).show();
-                                break;
-                            case 2:
-                                Toast.makeText(GoodSpecificHabit.this, "Bad Habit Recorded!", Toast.LENGTH_SHORT).show();
-                                break;
-                        }
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                        Toast.makeText(GoodSpecificHabit.this, "Progress Recorded!", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+        builder.setNegativeButton("Cancel",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                        Toast.makeText(GoodSpecificHabit.this, "Cancelled.", Toast.LENGTH_SHORT).show();
                     }
                 });
         builder.show();
@@ -47,11 +51,12 @@ public class GoodSpecificHabit extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(GoodSpecificHabit.this);
         builder.setTitle("Are you sure?");
         builder.setIcon(R.drawable.jar);
-        builder.setMessage("This will permanently delete this habit. However, records of this habit may remain (e.g. transaction history, user feed).");
+        builder.setMessage("This will permanently delete the habit \"" + habitName + "\". However, records of this habit may remain (e.g. transaction history, user feed).");
         builder.setPositiveButton("Cancel",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
+                        Toast.makeText(GoodSpecificHabit.this, "Cancelled", Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -62,6 +67,7 @@ public class GoodSpecificHabit extends AppCompatActivity {
                         Intent i = new Intent(getApplicationContext(), Habits_Page.class);
                         i.putExtra("PERSON", sharedData.getProfileName());
                         startActivity(i);
+                        Toast.makeText(GoodSpecificHabit.this, "Deleted Habit \"" + habitName + "\"", Toast.LENGTH_SHORT).show();
                     }
                 });
         builder.show();

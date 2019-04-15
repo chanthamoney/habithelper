@@ -33,7 +33,7 @@ public class Achievements extends ActivitySideMenu
         AlertDialog alertDialog = new AlertDialog.Builder(Achievements.this).create();
         alertDialog.setTitle("First Habit");
         alertDialog.setMessage("Congratulations! You earned this achievement by creating your first habit.");
-        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK",
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Ok",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();

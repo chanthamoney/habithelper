@@ -134,7 +134,7 @@ public class Friend_Feed_Page extends ActivitySideMenu
         AlertDialog.Builder builder = new AlertDialog.Builder(Friend_Feed_Page.this);
         builder.setTitle("Oh no!");
         builder.setMessage("This feature would allow you to search your feed or friends.");
-        builder.setPositiveButton("OK",
+        builder.setPositiveButton("Ok",
                 new DialogInterface.OnClickListener()
                 {
                     public void onClick(DialogInterface dialog, int id)

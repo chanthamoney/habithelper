@@ -42,7 +42,7 @@ public class CreateNewUserActivity extends AppCompatActivity {
                     builder.setTitle("No Mode Selected");
                     builder.setIcon(R.drawable.baseline_error_black_18dp);
                     builder.setMessage("Please select a mode to continue.");
-                    builder.setPositiveButton("OK",
+                    builder.setPositiveButton("Ok",
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
                                     dialog.cancel();
@@ -54,7 +54,7 @@ public class CreateNewUserActivity extends AppCompatActivity {
                     builder.setTitle("Empty Profile Name");
                     builder.setIcon(R.drawable.baseline_error_black_18dp);
                     builder.setMessage("Please input your full name.");
-                    builder.setPositiveButton("OK",
+                    builder.setPositiveButton("Ok",
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
                                     dialog.cancel();
@@ -66,7 +66,7 @@ public class CreateNewUserActivity extends AppCompatActivity {
                     builder.setTitle("Empty Username");
                     builder.setIcon(R.drawable.baseline_error_black_18dp);
                     builder.setMessage("Please a valid username.");
-                    builder.setPositiveButton("OK",
+                    builder.setPositiveButton("Ok",
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
                                     dialog.cancel();
@@ -92,7 +92,7 @@ public class CreateNewUserActivity extends AppCompatActivity {
                     builder.setTitle("Are you sure?");
                     builder.setIcon(R.drawable.jar);
                     builder.setMessage("Charity mode will immediately donate your funds from the jar to the Ronald McDonald House.");
-                    builder.setPositiveButton("OK",
+                    builder.setPositiveButton("Ok",
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
                                     dialog.cancel();
@@ -112,7 +112,7 @@ public class CreateNewUserActivity extends AppCompatActivity {
                     builder.setTitle("Bad Habits Mode");
                     builder.setIcon(R.drawable.jar);
                     builder.setMessage("This is the simplest mode. You will be charged money to put in the jar every time you break a bad habit.");
-                    builder.setPositiveButton("OK",
+                    builder.setPositiveButton("Ok",
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
                                     dialog.cancel();
@@ -124,7 +124,7 @@ public class CreateNewUserActivity extends AppCompatActivity {
                     builder.setTitle("Good Habits Mode");
                     builder.setIcon(R.drawable.jar);
                     builder.setMessage("This mode is similar to Bad Habits but with the addition of good habits. By completing good habits you can earn back money from bad habits.");
-                    builder.setPositiveButton("OK",
+                    builder.setPositiveButton("Ok",
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
                                     dialog.cancel();

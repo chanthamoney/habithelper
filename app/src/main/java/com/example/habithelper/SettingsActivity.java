@@ -265,12 +265,6 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             SharedPreferences.Editor editor = prefs.edit();
             editor.clear();
             editor.commit();
-
-            if (updatedData) {
-                Intent i;
-                i = new Intent(this, home.class);
-                startActivity(i);
-            }
         }
     }
 

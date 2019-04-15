@@ -22,6 +22,14 @@ public class ActivitySideMenu extends AppCompatActivity
 
     Globals sharedData = Globals.getInstance();
 
+    @Override
+    public void onRestart()
+    {
+        super.onRestart();
+        finish();
+        startActivity(getIntent());
+    }
+
     public static ArrayList<View> getViewsByTag(ViewGroup root, String tag) {
         ArrayList<View> views = new ArrayList<View>();
         final int childCount = root.getChildCount();

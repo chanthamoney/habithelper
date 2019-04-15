@@ -56,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="#"
-                android:inputType="text" />
+                android:inputType="number" />
 
         </LinearLayout>
 
@@ -78,7 +78,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="#"
-                android:inputType="text" />
+                android:inputType="number" />
 
             <TextView
                 android:id="@+id/mytimes"

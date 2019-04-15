@@ -119,6 +119,13 @@ public class Habits_Page extends ActivitySideMenu
 
     private void editHabit(android.view.View view) {
         myalert = new AlertDialog.Builder(Habits_Page.this).setView(R.layout.layout_popup_habit).show();
+        ((Switch) myalert.findViewById(R.id.myprivate)).setChecked(view.getTag(R.id.secret4).equals("TRUE"));
+        ((Switch) myalert.findViewById(R.id.mybreak)).setChecked(view.getTag(R.id.secret5).equals("TRUE"));
+        ((EditText) myalert.findViewById(R.id.mynameinput)).setText(view.getTag(R.id.secret6).toString());
+        ((EditText) myalert.findViewById(R.id.mynotesinput)).setText(view.getTag(R.id.secret7).toString());
+        ((EditText) myalert.findViewById(R.id.myfrequencyinput)).setText(view.getTag(R.id.secret8).toString());
+        ((EditText) myalert.findViewById(R.id.mycostinput)).setText(view.getTag(R.id.secret9).toString());
+
         currentlyEditing = Integer.parseInt(view.getTag(R.id.secret2).toString());
     }
 
@@ -160,17 +167,19 @@ public class Habits_Page extends ActivitySideMenu
                 startActivity(i);
             }
         } else {
-            TextView name = view.findViewById(R.id.habit_name);
-            if (name.getTag().equals("Bad")) {
-                i = new Intent(this, BadSpecificHabit.class);
-                i.putExtra("NAME", ((TextView) view.findViewById(R.id.habit_name)).getText());
-                i.putExtra("ID", ((TextView) view.findViewById(R.id.habit_description)).getTag().toString());
-                startActivity(i);
-            } else {
-                i = new Intent(this, GoodSpecificHabit.class);
-                i.putExtra("NAME", ((TextView) view.findViewById(R.id.habit_name)).getText());
-                i.putExtra("ID", ((TextView) view.findViewById(R.id.habit_description)).getTag().toString());
-                startActivity(i);
+            if (person.equals(sharedData.getProfileName())) {
+                TextView name = view.findViewById(R.id.habit_name);
+                if (name.getTag().equals("Bad")) {
+                    i = new Intent(this, BadSpecificHabit.class);
+                    i.putExtra("NAME", ((TextView) view.findViewById(R.id.habit_name)).getText());
+                    i.putExtra("ID", ((TextView) view.findViewById(R.id.habit_description)).getTag().toString());
+                    startActivity(i);
+                } else {
+                    i = new Intent(this, GoodSpecificHabit.class);
+                    i.putExtra("NAME", ((TextView) view.findViewById(R.id.habit_name)).getText());
+                    i.putExtra("ID", ((TextView) view.findViewById(R.id.habit_description)).getTag().toString());
+                    startActivity(i);
+                }
             }
         }
     }
